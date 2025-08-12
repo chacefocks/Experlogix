@@ -1,222 +1,330 @@
-/**
- * Modern Interactions for Sunrise Medical Web Configurator
- * Handles card-based option selection and modern UI behaviors
+/*
+ * Modern Interactions JavaScript
+ * Enhanced functionality for the modernized configurator
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    initializeModernInteractions();
-});
+(function() {
+    'use strict';
 
-function initializeModernInteractions() {
-    // Hide all radio buttons and checkboxes completely
-    hideAllInputs();
-    
-    // Convert options to cards
-    convertOptionsToCards();
-    
-    // Set up click handlers for card selection
-    setupCardClickHandlers();
-    
-    // Monitor for dynamic content changes
-    observeContentChanges();
-    
-    // Set up section collapse/expand
-    setupSectionToggles();
-}
-
-function hideAllInputs() {
-    const inputs = document.querySelectorAll('input[type="radio"], input[type="checkbox"]');
-    inputs.forEach(input => {
-        input.style.display = 'none';
-        input.style.visibility = 'hidden';
-        input.style.opacity = '0';
-        input.style.position = 'absolute';
-        input.style.left = '-9999px';
-        input.style.top = '-9999px';
-        input.style.width = '0';
-        input.style.height = '0';
-        input.style.zIndex = '-1';
-    });
-}
-
-function convertOptionsToCards() {
-    // Find all option containers
-    const optionContainers = document.querySelectorAll('.xOB, .xOBDis, .xOBErr, .xRgn .xInner');
-    
-    optionContainers.forEach(container => {
-        // Apply flexbox layout to container
-        container.style.display = 'flex';
-        container.style.flexWrap = 'wrap';
-        container.style.gap = '15px';
-        container.style.justifyContent = 'flex-start';
-        container.style.alignItems = 'flex-start';
-        container.style.width = '100%';
-        
-        // Find all option elements within this container
-        const options = container.querySelectorAll('.xP, tr, label');
-        
-        options.forEach(option => {
-            convertToCard(option);
-        });
-    });
-}
-
-function convertToCard(element) {
-    // Skip if already converted
-    if (element.classList.contains('modern-card')) return;
-    
-    // Add card styling
-    element.classList.add('modern-card');
-    element.style.display = 'inline-block';
-    element.style.background = 'white';
-    element.style.border = '2px solid #e9ecef';
-    element.style.borderRadius = '8px';
-    element.style.padding = '15px';
-    element.style.margin = '8px';
-    element.style.cursor = 'pointer';
-    element.style.transition = 'all 0.3s ease';
-    element.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-    element.style.position = 'relative';
-    element.style.minWidth = '180px';
-    element.style.maxWidth = '280px';
-    element.style.verticalAlign = 'top';
-    element.style.width = 'auto';
-    
-    // Hide any radio buttons or checkboxes within this element
-    const inputs = element.querySelectorAll('input[type="radio"], input[type="checkbox"]');
-    inputs.forEach(input => {
-        input.style.display = 'none';
-        input.style.visibility = 'hidden';
-        input.style.opacity = '0';
-        input.style.position = 'absolute';
-        input.style.left = '-9999px';
-    });
-    
-    // Check if this option is selected
-    updateCardSelection(element);
-}
-
-function setupCardClickHandlers() {
-    document.addEventListener('click', function(e) {
-        const card = e.target.closest('.modern-card, .xP');
-        if (!card) return;
-        
-        // Find the input within this card
-        const input = card.querySelector('input[type="radio"], input[type="checkbox"]');
-        if (!input) return;
-        
-        // Prevent default if clicking on the input itself
-        if (e.target === input) return;
-        
-        // Toggle the input
-        if (input.type === 'radio') {
-            input.checked = true;
-        } else if (input.type === 'checkbox') {
-            input.checked = !input.checked;
-        }
-        
-        // Trigger change event
-        const event = new Event('change', { bubbles: true });
-        input.dispatchEvent(event);
-        
-        // Update visual selection
-        updateAllCardSelections();
-        
-        e.preventDefault();
-        e.stopPropagation();
-    });
-}
-
-function updateCardSelection(card) {
-    const input = card.querySelector('input[type="radio"], input[type="checkbox"]');
-    if (!input) return;
-    
-    if (input.checked) {
-        // Selected state
-        card.style.borderColor = '#007bff';
-        card.style.borderWidth = '3px';
-        card.style.background = 'rgba(0, 123, 255, 0.05)';
-        card.style.boxShadow = '0 0 0 2px rgba(0, 123, 255, 0.2)';
-        
-        // Add checkmark if not already present
-        if (!card.querySelector('.selection-indicator')) {
-            const checkmark = document.createElement('div');
-            checkmark.className = 'selection-indicator';
-            checkmark.innerHTML = '✓';
-            checkmark.style.position = 'absolute';
-            checkmark.style.top = '8px';
-            checkmark.style.right = '8px';
-            checkmark.style.color = '#007bff';
-            checkmark.style.fontSize = '16px';
-            checkmark.style.fontWeight = 'bold';
-            checkmark.style.background = 'white';
-            checkmark.style.borderRadius = '50%';
-            checkmark.style.width = '24px';
-            checkmark.style.height = '24px';
-            checkmark.style.display = 'flex';
-            checkmark.style.alignItems = 'center';
-            checkmark.style.justifyContent = 'center';
-            checkmark.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-            card.appendChild(checkmark);
-        }
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeModernFeatures);
     } else {
-        // Unselected state
-        card.style.borderColor = '#e9ecef';
-        card.style.borderWidth = '2px';
-        card.style.background = 'white';
-        card.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-        
-        // Remove checkmark
-        const checkmark = card.querySelector('.selection-indicator');
-        if (checkmark) {
-            checkmark.remove();
-        }
+        initializeModernFeatures();
     }
-}
 
-function updateAllCardSelections() {
-    const cards = document.querySelectorAll('.modern-card, .xP');
-    cards.forEach(updateCardSelection);
-}
+    function initializeModernFeatures() {
+        initializeCollapsibleSections();
+        initializeSmoothScrolling();
+        initializeKeyboardNavigation();
+        initializeTooltips();
+        initializeProgressIndicators();
+        initializeResponsiveFeatures();
+    }
 
-function observeContentChanges() {
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList') {
-                // New content added, convert any new options
-                setTimeout(() => {
-                    hideAllInputs();
-                    convertOptionsToCards();
-                    updateAllCardSelections();
-                }, 100);
-            }
-        });
-    });
-    
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-}
-
-function setupSectionToggles() {
-    const headers = document.querySelectorAll('.xRgnHdr, .xRgnHdrGL');
-    headers.forEach(header => {
-        header.addEventListener('click', function() {
-            const section = this.closest('.xRgn');
-            const inner = section.querySelector('.xInner');
+    /**
+     * Initialize collapsible sections
+     */
+    function initializeCollapsibleSections() {
+        const headers = document.querySelectorAll('.xRgn > .xRgnHdr, .xRgn > .xRgnHdrGL');
+        
+        headers.forEach(header => {
+            // Remove any existing click handlers to prevent conflicts
+            header.removeEventListener('click', handleHeaderClick);
             
-            if (section.hasAttribute('collapsed')) {
-                section.removeAttribute('collapsed');
-                inner.style.display = 'block';
-            } else {
-                section.setAttribute('collapsed', '');
-                inner.style.display = 'none';
+            header.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const section = this.parentElement;
+                const content = section.querySelector('.xInner');
+                
+                if (!content) return;
+                
+                // Toggle collapsed state
+                const isCollapsed = section.hasAttribute('collapsed');
+                
+                if (isCollapsed) {
+                    section.removeAttribute('collapsed');
+                    content.style.display = 'block';
+                } else {
+                    section.setAttribute('collapsed', '');
+                    content.style.display = 'none';
+                }
+                
+                // Update ARIA attributes for accessibility
+                this.setAttribute('aria-expanded', !isCollapsed);
+                content.setAttribute('aria-hidden', isCollapsed);
+            });
+            
+            // Set initial ARIA attributes
+            const section = header.parentElement;
+            const content = section.querySelector('.xInner');
+            const isCollapsed = section.hasAttribute('collapsed');
+            
+            header.setAttribute('role', 'button');
+            header.setAttribute('aria-expanded', !isCollapsed);
+            header.setAttribute('tabindex', '0');
+            
+            if (content) {
+                content.setAttribute('aria-hidden', isCollapsed);
+                // Ensure content is visible by default unless collapsed
+                if (!isCollapsed) {
+                    content.style.display = 'block';
+                }
             }
         });
-    });
-}
+    }
 
-// Run multiple times to catch dynamically loaded content
-setTimeout(initializeModernInteractions, 1000);
-setTimeout(initializeModernInteractions, 2000);
+
+    /**
+     * Initialize smooth scrolling for navigation
+     */
+    function initializeSmoothScrolling() {
+        const navLinks = document.querySelectorAll('.xCb a[href^="#"]');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+
+    /**
+     * Enhanced keyboard navigation
+     */
+    function initializeKeyboardNavigation() {
+        // Handle Enter and Space keys for collapsible headers
+        document.addEventListener('keydown', function(e) {
+            if (e.target.matches('.xRgnHdr, .xRgnHdrGL')) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.target.click();
+                }
+            }
+        });
+
+        // Escape key to close modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('overlayDlg');
+                if (modal && modal.style.display !== 'none') {
+                    closeOverlayDialog();
+                }
+            }
+        });
+    }
+
+    /**
+     * Initialize modern tooltips
+     */
+    function initializeTooltips() {
+        const elementsWithTooltips = document.querySelectorAll('[title]');
+        
+        elementsWithTooltips.forEach(element => {
+            const originalTitle = element.getAttribute('title');
+            element.removeAttribute('title'); // Remove default tooltip
+            
+            const tooltip = document.createElement('div');
+            tooltip.className = 'modern-tooltip';
+            tooltip.textContent = originalTitle;
+            tooltip.style.cssText = `
+                position: absolute;
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 8px 12px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-family: 'Muli', sans-serif;
+                white-space: nowrap;
+                z-index: 10000;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.2s ease;
+                transform: translateY(-100%);
+                margin-top: -8px;
+            `;
+            
+            document.body.appendChild(tooltip);
+            
+            element.addEventListener('mouseenter', function(e) {
+                const rect = this.getBoundingClientRect();
+                tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+                tooltip.style.top = rect.top + window.scrollY + 'px';
+                tooltip.style.opacity = '1';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                tooltip.style.opacity = '0';
+            });
+        });
+    }
+
+    /**
+     * Initialize progress indicators
+     */
+    function initializeProgressIndicators() {
+        // Add loading states to buttons
+        const buttons = document.querySelectorAll('.xTbBtns > a');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (!this.classList.contains('loading')) {
+                    this.classList.add('loading');
+                    this.style.opacity = '0.7';
+                    this.style.pointerEvents = 'none';
+                    
+                    // Remove loading state after 2 seconds (adjust as needed)
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                        this.style.opacity = '';
+                        this.style.pointerEvents = '';
+                    }, 2000);
+                }
+            });
+        });
+    }
+
+    /**
+     * Initialize responsive features
+     */
+    function initializeResponsiveFeatures() {
+        // Mobile menu toggle
+        const createMobileMenuToggle = () => {
+            const toggle = document.createElement('button');
+            toggle.className = 'mobile-menu-toggle';
+            toggle.innerHTML = '<i class="fas fa-bars"></i>';
+            toggle.style.cssText = `
+                display: none;
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1001;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 10px;
+                cursor: pointer;
+                font-size: 16px;
+            `;
+            
+            toggle.addEventListener('click', function() {
+                const sidebar = document.querySelector('.xCb');
+                if (sidebar) {
+                    const isVisible = sidebar.style.transform === 'translateX(0px)';
+                    sidebar.style.transform = isVisible ? 'translateX(-100%)' : 'translateX(0px)';
+                }
+            });
+            
+            document.body.appendChild(toggle);
+            
+            // Show/hide based on screen size
+            const mediaQuery = window.matchMedia('(max-width: 768px)');
+            const handleMediaQuery = (e) => {
+                toggle.style.display = e.matches ? 'block' : 'none';
+            };
+            
+            mediaQuery.addListener(handleMediaQuery);
+            handleMediaQuery(mediaQuery);
+        };
+        
+        createMobileMenuToggle();
+    }
+
+    /**
+     * Utility function to add CSS class with animation
+     */
+    function addClassWithAnimation(element, className, duration = 300) {
+        element.classList.add(className);
+        setTimeout(() => {
+            element.classList.remove(className);
+        }, duration);
+    }
+
+    /**
+     * Enhanced form validation with modern styling
+     */
+    function enhanceFormValidation() {
+        const inputs = document.querySelectorAll('input[type="text"], textarea');
+        
+        inputs.forEach(input => {
+            input.addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.style.borderColor = 'var(--danger-color)';
+                this.style.boxShadow = '0 0 0 2px rgba(220, 53, 69, 0.25)';
+                
+                // Remove error styling on input
+                this.addEventListener('input', function() {
+                    this.style.borderColor = '';
+                    this.style.boxShadow = '';
+                }, { once: true });
+            });
+        });
+    }
+
+    // Initialize form validation
+    enhanceFormValidation();
+
+    /**
+     * Add modern loading spinner
+     */
+    function createLoadingSpinner() {
+        const spinner = document.createElement('div');
+        spinner.className = 'modern-spinner';
+        spinner.innerHTML = '<div class="spinner-ring"></div>';
+        spinner.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        `;
+        
+        const spinnerCSS = document.createElement('style');
+        spinnerCSS.textContent = `
+            .spinner-ring {
+                width: 40px;
+                height: 40px;
+                border: 4px solid var(--medium-gray);
+                border-top: 4px solid var(--accent-color);
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+            
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        `;
+        
+        document.head.appendChild(spinnerCSS);
+        document.body.appendChild(spinner);
+        
+        // Expose global functions to show/hide spinner
+        window.showModernSpinner = () => {
+            spinner.style.display = 'flex';
+        };
+        
+        window.hideModernSpinner = () => {
+            spinner.style.display = 'none';
+        };
+    }
+    
+    createLoadingSpinner();
+
+})();
