@@ -1,3 +1,73 @@
+/*******************NOTES************************************************************
+This below CSS code is for style sheet MSCRM60-Borders.css Template UI ONLY!!
+it will not work properly if another Template is used, it will required modifications,
+it is recommended to create a new file if template will change.
+DO NOT TOUCH, only admin.
+*************************************************************************************/
+
+// Hide unwanted sidebar options immediately when DOM loads
+function hideUnwantedSidebarOptions() {
+    // List of text content to hide (case insensitive)
+    var hideTexts = [
+        'owner',
+        'manual', 
+        'packaging',
+        'database',
+        'version',
+        'image'
+    ];
+    
+    // Get all sidebar links
+    var sidebarLinks = document.querySelectorAll('.xCb a, .xCbBtns a');
+    
+    sidebarLinks.forEach(function(link) {
+        var linkText = link.textContent || link.innerText || '';
+        var linkHref = link.getAttribute('href') || '';
+        var linkId = link.getAttribute('id') || '';
+        
+        // Check if link contains any of the unwanted text
+        var shouldHide = hideTexts.some(function(hideText) {
+            return linkText.toLowerCase().indexOf(hideText) !== -1 ||
+                   linkHref.toLowerCase().indexOf(hideText) !== -1 ||
+                   linkId.toLowerCase().indexOf(hideText) !== -1;
+        });
+        
+        if (shouldHide) {
+            // Multiple ways to hide the element
+            link.style.display = 'none';
+            link.style.visibility = 'hidden';
+            link.style.opacity = '0';
+            link.style.height = '0';
+            link.style.overflow = 'hidden';
+            link.style.position = 'absolute';
+            link.style.left = '-9999px';
+            
+            // Also hide parent if it's a container
+            if (link.parentNode) {
+                var parent = link.parentNode;
+                if (parent.children.length === 1) {
+                    parent.style.display = 'none';
+                }
+            }
+        }
+    });
+    
+    // Also hide by common IDs
+    var hideIds = [
+        'expCL001', 'expCL002', 'expCL_image', 'expCL_database', 
+        'expCL_version', 'expCL_owner', 'expCL_manual', 'expCL_packaging',
+        'expCL_ownersmanual', 'expCL_pack'
+    ];
+    
+    hideIds.forEach(function(id) {
+        var element = document.getElementById(id);
+        if (element) {
+            element.style.display = 'none';
+            element.style.visibility = 'hidden';
+        }
+    });
+}
+
 /*functions below is to hide all the images based on NO from image category on any Browser*/
 //function triggers when NO is pick from Image Category due to the Formula 'contains JavaScript' that's link to it.
 function myfunctionhide()
@@ -185,6 +255,9 @@ if (!document.addEventListener)
 //the function will check the DOM status and return true its complete
 		if (document.readyState === "complete" ) 
 		{
+			// Hide unwanted sidebar options
+			setTimeout(hideUnwantedSidebarOptions, 100);
+			
 //once completed, setTimeout command will run a function with an specific time(2000 miliseconds = 2 seconds) after, 
 //it will run and do the following instructions:
 			setTimeout(function emptyimages()
@@ -274,6 +347,9 @@ else if (document.addEventListener)
 //once is done (known as DOMContentLoaded) it will call a function that will check the DOM status and return true its complete
     document.addEventListener("DOMContentLoaded", function()
 	{
+		// Hide unwanted sidebar options
+		setTimeout(hideUnwantedSidebarOptions, 100);
+		
 //once completed, setTimeout command will run a function with an specific time(2000 miliseconds = 2 seconds) after, 
 //it will run and do the following instructions:
 		setTimeout(function emptyimages()
@@ -356,6 +432,15 @@ These discontinued frame colors will remain active on existing quotes & orders u
 		
 	},false);
 }
+
+// Also run the hide function after a delay to catch dynamically loaded content
+setTimeout(function() {
+    hideUnwantedSidebarOptions();
+    // Run it again after another delay
+    setTimeout(hideUnwantedSidebarOptions, 1000);
+    setTimeout(hideUnwantedSidebarOptions, 3000);
+}, 500);
+
 /*working functions below is to hide all the images based on Reset option from main tool bar on any Browser*/
  //document.getElementById will look into the Page for any Element that has an ID of config_toolbar and once its found
  //it will add all the info it carries to var someElement
