@@ -188,6 +188,53 @@
 .xCb a:contains("PACKAGING") {
   display: none !important;
 }
+
+/* More aggressive hiding - target by position and common patterns */
+.xCb a[href*="owner"],
+.xCb a[href*="Owner"],
+.xCb a[href*="OWNER"],
+.xCb a[href*="manual"],
+.xCb a[href*="Manual"],
+.xCb a[href*="MANUAL"],
+.xCb a[href*="packaging"],
+.xCb a[href*="Packaging"],
+.xCb a[href*="PACKAGING"],
+.xCb a[href*="pack"],
+.xCb a[href*="Pack"],
+.xCb a[href*="PACK"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide by common text patterns - more comprehensive */
+.xCb a {
+  /* This will be overridden by JavaScript if needed */
+}
+
+/* Target last few items in sidebar if they're the problematic ones */
+.xCb a:nth-last-child(-n+3) {
+  /* We'll check if these are the owner's manual/packaging items */
+}
+
+/* Force hide any element containing these words anywhere */
+*[id*="owner" i],
+*[id*="manual" i],
+*[id*="packaging" i],
+*[class*="owner" i],
+*[class*="manual" i],
+*[class*="packaging" i] {
+  display: none !important;
+}
+
+/* Hide parent containers that might contain these items */
+.xCb > *:has(a[href*="owner"]),
+.xCb > *:has(a[href*="manual"]),
+.xCb > *:has(a[href*="packaging"]) {
+  display: none !important;
+}
 /* ==========================================================================
    SIDEBAR MODERNIZATION
    ========================================================================== */
