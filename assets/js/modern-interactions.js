@@ -20,6 +20,7 @@
         initializeTooltips();
         initializeProgressIndicators();
         initializeResponsiveFeatures();
+        initializeOptionCards();
     }
 
     /**
@@ -327,4 +328,75 @@
     
     createLoadingSpinner();
 
+    /**
+     * Initialize option card functionality
+     */
+    function initializeOptionCards() {
+        // Make entire option cards clickable
+        document.addEventListener('click', function(e) {
+            const optionCard = e.target.closest('.xP');
+            if (optionCard) {
+                const input = optionCard.querySelector('input[type="radio"], input[type="checkbox"]');
+                if (input && !input.disabled) {
+                    // For radio buttons, uncheck others in the same group first
+                    if (input.type === 'radio') {
+                        const radioGroup = document.querySelectorAll(`input[name="${input.name}"]`);
+                        radioGroup.forEach(radio => {
+                            const card = radio.closest('.xP');
+                            if (card) {
+                                card.classList.remove('selected');
+                            }
+                        });
+                    }
+                    
+                    // Toggle the input
+                    if (input.type === 'checkbox') {
+                        input.checked = !input.checked;
+                    } else {
+                        input.checked = true;
+                    }
+                    
+                    // Add selected class for styling
+                    if (input.checked) {
+                        optionCard.classList.add('selected');
+                    } else {
+                        optionCard.classList.remove('selected');
+                    }
+                    
+                    // Trigger change event
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }
+        });
+        
+        // Initialize existing selections
+        document.querySelectorAll('.xP input[type="radio"]:checked, .xP input[type="checkbox"]:checked').forEach(input => {
+            const card = input.closest('.xP');
+            if (card) {
+                card.classList.add('selected');
+            }
+        });
+        
+        // Add keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.target.matches('.xP') && (e.key === 'Enter' || e.key === ' ')) {
+                e.preventDefault();
+                e.target.click();
+            }
+        });
+        
+        // Make cards focusable
+        document.querySelectorAll('.xP').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            
+            const input = card.querySelector('input[type="radio"], input[type="checkbox"]');
+            if (input) {
+                const label = card.querySelector('td[ct="p"], td[ct="cp"]');
+                if (label) {
+                    card.setAttribute('aria-label', label.textContent.trim());
+                }
+            }
+        });
+    }
 })();
