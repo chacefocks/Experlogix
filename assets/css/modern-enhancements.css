@@ -1,320 +1,562 @@
 /*
  * Modern Enhancements Stylesheet
- * Safe styling additions for Sunrise Medical Web Configurator
- * This file adds modern styling without modifying existing functionality
+ * Complete modernization for Sunrise Medical Web Configurator
  */
 
 /* ==========================================================================
-   TOP LOGO IMAGE FIX
+   FONTS
    ========================================================================== */
 
-/* Fix for top logo image and reduce top bar height to 55px */
-#C2_LOGO {
-  height: 55px !important;
-  max-height: 55px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  line-height: 55px !important;
-  overflow: hidden !important;
-}
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Muli:wght@300;400;500;600;700&display=swap');
 
-#C2_LOGO td {
-  height: 55px !important;
-  vertical-align: middle !important;
-  padding: 5px !important;
-  line-height: normal !important;
-}
+/* Font Awesome for modern icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-#C2_LOGO img {
-  max-height: 45px !important;
-  width: auto !important;
-  object-fit: contain !important;
-  display: block !important;
-}
+/* ==========================================================================
+   ROOT VARIABLES
+   ========================================================================== */
 
-#C2_LOGO table {
-  height: 55px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border-collapse: collapse !important;
-}
-
-/* Target the main toolbar container */
-.xMainCfg > .xTb {
-  height: 55px !important;
-  min-height: 55px !important;
-  max-height: 55px !important;
-  background-color: #f5f5f5 !important;
-}
-
-/* Adjust body positioning to account for smaller header */
-.xMainCfg > .xBody,
-.xMainCfg > .xCb {
-  top: 55px !important;
+:root {
+  --primary-color: #6c757d;
+  --primary-hover: #5a6268;
+  --secondary-color: #f8f9fa;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --dark-gray: #495057;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --box-shadow-hover: 0 4px 8px rgba(0,0,0,0.15);
+  --transition: all 0.3s ease;
 }
 
 /* ==========================================================================
-   CONFIG DIV SPACING FIX
+   GLOBAL TYPOGRAPHY
    ========================================================================== */
 
-/* Fix the gap between logo and orange bar by adjusting .xCfg positioning */
 .xCfg {
-  top: 65px !important; /* Move config container to create balanced spacing */
+  font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: var(--dark-gray) !important;
+  background-color: #ffffff !important;
 }
 
-/* Adjust the orange bar to start at the top of the config container */
-.xMainCfg > .xTb {
-  top: 10px !important; /* Orange bar starts 10px down from top of config container */
-  z-index: 1 !important; /* Normal z-index for orange bar */
-  height: 55px !important;
-  min-height: 55px !important;
-  max-height: 55px !important;
-}
-
-/* Ensure logo stays on top */
-#C2_LOGO {
-  z-index: 2 !important; /* Keep logo above orange bar */
-  position: relative !important;
-}
-
-/* Adjust body positioning to account for smaller header */
-.xMainCfg > .xBody,
-.xMainCfg > .xCb {
-  top: 65px !important; /* Content starts below orange bar within config container */
+/* Page titles and headings use Montserrat */
+.xPage .expPageTitle,
+.xPage .xTitle,
+.xRgn > .xRgnHdr > span,
+.xRgn > .xRgnHdrGL > span {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
 }
 
 /* ==========================================================================
-   ORANGE BAR BUTTON CENTERING
+   TOP TOOLBAR MODERNIZATION
    ========================================================================== */
 
-/* Center the buttons vertically in the orange bar */
+/* Main toolbar container */
+.xMainCfg > .xTb {
+  height: 60px !important;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+  border: none !important;
+  box-shadow: var(--box-shadow) !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+/* Toolbar buttons container */
 .xMainCfg > .xTb > .xTbBtns {
   top: 50% !important;
   transform: translateY(-50%) !important;
+  left: 20px !important;
   display: flex !important;
   align-items: center !important;
-  height: auto !important;
+  gap: 12px !important;
 }
 
-/* Ensure buttons have proper spacing and alignment */
+/* Individual toolbar buttons */
 .xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14) {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-height: 32px !important;
-  padding: 8px 12px !important;
-  margin: 0 2px !important;
+  padding: 10px 16px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--border-radius) !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  transition: var(--transition) !important;
+  min-height: 36px !important;
+  margin: 0 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
 
-/* Fix button text alignment */
-.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14) span {
-  line-height: 1 !important;
+.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14):hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* Button text styling */
+.xTbBtns > a span {
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  margin-left: 8px !important;
   margin-top: 0 !important;
 }
 
-/* ==========================================================================
-   HIDE SPECIFIC BUTTONS
-   ========================================================================== */
-
-/* Ensure Validate button stays hidden (override any display changes) */
-#b21 {
+/* Hide old button images */
+.xTbBtns img {
   display: none !important;
 }
 
-/* ==========================================================================
-   ORDER ENTRY SYSTEM TEXT STYLING - Target actual HTML elements
-   ========================================================================== */
+/* Add Font Awesome icons to buttons */
+#b10:before { content: "\f0c7"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b13:before { content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b3:before { content: "\f2f9"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b4:before { content: "\f06e"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
 
-/* Import Montserrat font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-/* Import Font Awesome for modern icons */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
-/* Style the "Order Entry System" text - target the <i> tag inside .xTbText */
-#C2_LOGO i {
-  font-family: 'Montserrat', sans-serif !important;
-  font-style: normal !important; /* Remove italic */
-  color: #666666 !important; /* Grey color */
-  font-weight: bold !important; /* Make it bold */
-  font-size: 16px !important; /* Override the large 40px from parent */
+/* Hide specific buttons */
+#b21 { display: none !important; }
 
 /* ==========================================================================
-   MODERN ICON REPLACEMENTS - TARGET SPECIFIC BUTTON IDS
+   SIDEBAR MODERNIZATION
    ========================================================================== */
 
-/* Hide all toolbar button images */
-#b10 img,
-#b13 img,
-#b3 img,
-#b4 img {
-  display: none !important;
+.xCfg > .xCb {
+  background: var(--secondary-color) !important;
+  border-right: 1px solid var(--medium-gray) !important;
+  width: 280px !important;
+  top: 60px !important;
+  left: 0 !important;
+  padding: 20px 0 !important;
+  box-shadow: 2px 0 4px rgba(0,0,0,0.05) !important;
 }
 
-/* Replace Save and Close button (b10) with Font Awesome save icon */
-#b10:before {
-  font-family: "Font Awesome 6 Free" !important;
-  font-weight: 900 !important;
-  content: "\f0c7" !important; /* Save icon */
-  font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
+/* Sidebar links */
+.xCb a {
+  display: block !important;
+  padding: 12px 20px !important;
+  color: var(--dark-gray) !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  border-left: 3px solid transparent !important;
+  transition: var(--transition) !important;
+  margin: 2px 0 !important;
 }
 
-/* Replace Close button (b13) with Font Awesome close icon */
-#b13:before {
-  font-family: "Font Awesome 6 Free" !important;
-  font-weight: 900 !important;
-  content: "\f00d" !important; /* Close/X icon */
-  font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
+.xCb a:hover {
+  background-color: rgba(0, 123, 255, 0.1) !important;
+  border-left-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+  transform: translateX(4px) !important;
 }
 
-/* Replace Reset button (b3) with Font Awesome refresh icon */
-#b3:before {
-  font-family: "Font Awesome 6 Free" !important;
-  font-weight: 900 !important;
-  content: "\f2f9" !important; /* Refresh/Reset icon */
-  font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
+.xCb a[hasSel="1"] {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+  border-left-color: var(--accent-hover) !important;
+  font-weight: 600 !important;
 }
 
-/* Replace Quick View button (b4) with Font Awesome eye icon */
-#b4:before {
-  font-family: "Font Awesome 6 Free" !important;
-  font-weight: 900 !important;
-  content: "\f06e" !important; /* Eye/View icon */
-  font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
+/* Error states in sidebar */
+.xCbBtns > a.xCbErr {
+  background-color: var(--danger-color) !important;
+  color: white !important;
+  border-left-color: #c82333 !important;
 }
 
-/* Hover effects for the new icons */
-#b10:hover:before,
-#b13:hover:before,
-#b3:hover:before,
-#b4:hover:before {
-  color: #333 !important;
+.xCbBtns > a.xCbErr:hover {
+  background-color: #c82333 !important;
 }
 
 /* ==========================================================================
-   NUCLEAR ICON REPLACEMENT - TARGET BY SRC ATTRIBUTE
+   MAIN CONTENT AREA
    ========================================================================== */
 
-/* Target images by their exact src attributes - NUCLEAR APPROACH */
-img[src="assets/images/btnSave.png"],
-img[src="assets/images/btnCancel.png"], 
-img[src="assets/images/btnReset.png"],
-img[src="assets/images/btnQuickView.png"],
-img[src*="btnSave.png"],
-img[src*="btnCancel.png"],
-img[src*="btnReset.png"], 
-img[src*="btnQuickView.png"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-  position: absolute !important;
-  left: -9999px !important;
-  z-index: -1 !important;
-  max-width: 0 !important;
-  max-height: 0 !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  border: none !important;
-  padding: 0 !important;
+.xMainCfg > .xBody {
+  top: 60px !important;
+  left: 280px !important;
+  padding: 20px !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Page container */
+.xPage {
   margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Replace with Font Awesome icons using button IDs */
-#b10:before {
+/* ==========================================================================
+   SECTION CONTAINERS (ROUNDED BOXES)
+   ========================================================================== */
+
+.xRgn {
+  background: white !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--box-shadow) !important;
+  margin-bottom: 20px !important;
+  overflow: hidden !important;
+  transition: var(--transition) !important;
+}
+
+.xRgn:hover {
+  box-shadow: var(--box-shadow-hover) !important;
+}
+
+/* Section headers */
+.xRgn > .xRgnHdr,
+.xRgn > .xRgnHdrGL {
+  background: linear-gradient(135deg, var(--light-gray) 0%, var(--medium-gray) 100%) !important;
+  border: none !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  position: relative !important;
+}
+
+.xRgn > .xRgnHdr:hover,
+.xRgn > .xRgnHdrGL:hover {
+  background: linear-gradient(135deg, var(--medium-gray) 0%, #dee2e6 100%) !important;
+}
+
+.xRgn > .xRgnHdr > span,
+.xRgn > .xRgnHdrGL > span {
+  font-size: 16px !important;
+  color: var(--dark-gray) !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Add collapse/expand icons */
+.xRgn > .xRgnHdr > span:after,
+.xRgn > .xRgnHdrGL > span:after {
+  content: "\f107" !important;
   font-family: "Font Awesome 6 Free" !important;
   font-weight: 900 !important;
-  content: "\f0c7" !important; /* Save icon */
+  margin-left: auto !important;
+  transition: transform 0.3s ease !important;
+}
+
+.xRgn[collapsed] > .xRgnHdr > span:after,
+.xRgn[collapsed] > .xRgnHdrGL > span:after {
+  transform: rotate(-90deg) !important;
+}
+
+/* Section content */
+.xRgn .xInner {
+  padding: 20px !important;
+  border: none !important;
+}
+
+/* Error states for sections */
+.xRgn[err] {
+  border-left: 4px solid var(--danger-color) !important;
+}
+
+.xRgn[err] > .xRgnHdr,
+.xRgn[err] > .xRgnHdrGL {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+  color: var(--danger-color) !important;
+}
+
+.xRgn[err] > .xRgnHdr > span,
+.xRgn[err] > .xRgnHdrGL > span {
+  color: var(--danger-color) !important;
+}
+
+/* ==========================================================================
+   FORM CONTROLS MODERNIZATION
+   ========================================================================== */
+
+/* Input fields */
+input[type="text"],
+textarea,
+.xP input,
+.xP textarea {
+  font-family: 'Muli', sans-serif !important;
+  border: 1px solid var(--medium-gray) !important;
+  border-radius: 4px !important;
+  padding: 8px 12px !important;
+  transition: var(--transition) !important;
+  background-color: white !important;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+.xP input:focus,
+.xP textarea:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+  outline: none !important;
+}
+
+input[type="text"]:hover,
+textarea:hover,
+.xP input:hover,
+.xP textarea:hover {
+  border-color: var(--primary-color) !important;
+}
+
+/* Combo boxes */
+.xComboBox > .xComboEdit {
+  border: 1px solid var(--medium-gray) !important;
+  border-radius: 4px 0 0 4px !important;
+  background-color: white !important;
+}
+
+.xComboBox > .xImage {
+  border: 1px solid var(--medium-gray) !important;
+  border-left: none !important;
+  border-radius: 0 4px 4px 0 !important;
+  background-color: var(--light-gray) !important;
+}
+
+.xComboBox:hover .xComboEdit,
+.xComboBox:hover .xImage {
+  border-color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--medium-gray) !important;
+  border-radius: 4px !important;
+  transition: var(--transition) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color) !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--light-gray) !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--medium-gray) var(--light-gray) !important;
+}
+
+/* ==========================================================================
+   BUTTONS AND INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+/* General button styling */
+.xRgn a[display='button'] {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  transition: var(--transition) !important;
+  cursor: pointer !important;
+}
+
+.xRgn a[display='button']:hover {
+  background: var(--accent-hover) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--box-shadow-hover) !important;
+}
+
+/* ==========================================================================
+   TABLES AND GRIDS
+   ========================================================================== */
+
+table.xCatGrid {
+  background: white !important;
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+  box-shadow: var(--box-shadow) !important;
+}
+
+table.xCatGrid th {
+  background: var(--light-gray) !important;
+  color: var(--dark-gray) !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 600 !important;
+  padding: 12px 8px !important;
+  border-bottom: 1px solid var(--medium-gray) !important;
+}
+
+table.xCatGrid td {
+  padding: 10px 8px !important;
+  border-bottom: 1px solid #f8f9fa !important;
+  transition: var(--transition) !important;
+}
+
+table.xCatGrid tr:hover td {
+  background-color: rgba(0, 123, 255, 0.05) !important;
+}
+
+/* ==========================================================================
+   MODAL DIALOGS
+   ========================================================================== */
+
+#overlayDlg {
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+  overflow: hidden !important;
+}
+
+#overlayDlg > .overlayDlg_title {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+#overlayDlg > .overlayDlg_title > span {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
   font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  position: relative !important;
-  z-index: 999 !important;
+  color: white !important;
 }
 
-#b13:before {
-  font-family: "Font Awesome 6 Free" !important;
-  font-weight: 900 !important;
-  content: "\f00d" !important; /* Close/X icon */
-  font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  position: relative !important;
-  z-index: 999 !important;
+/* ==========================================================================
+   STATUS BAR
+   ========================================================================== */
+
+.xCfg > .xSb {
+  background: var(--light-gray) !important;
+  border-top: 1px solid var(--medium-gray) !important;
+  color: var(--dark-gray) !important;
+  font-family: 'Muli', sans-serif !important;
+  padding: 8px 20px !important;
 }
 
-#b3:before {
-  font-family: "Font Awesome 6 Free" !important;
-  font-weight: 900 !important;
-  content: "\f2f9" !important; /* Refresh/Reset icon */
-  font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  position: relative !important;
-  z-index: 999 !important;
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .xCfg > .xCb {
+    width: 240px !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 240px !important;
+  }
 }
 
-#b4:before {
-  font-family: "Font Awesome 6 Free" !important;
-  font-weight: 900 !important;
-  content: "\f06e" !important; /* Eye/View icon */
-  font-size: 16px !important;
-  color: #666 !important;
-  margin-right: 6px !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  position: relative !important;
-  z-index: 999 !important;
+@media (max-width: 768px) {
+  .xCfg > .xCb {
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 0 !important;
+  }
+  
+  .xTbBtns > a span {
+    display: none !important;
+  }
+  
+  .xTbBtns > a {
+    padding: 10px !important;
+    min-width: 40px !important;
+  }
 }
 
-/* Hover effects for icons */
-#b10:hover:before,
-#b13:hover:before,
-#b3:hover:before,
-#b4:hover:before {
-  color: #333 !important;
+/* ==========================================================================
+   ANIMATIONS AND TRANSITIONS
+   ========================================================================== */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ALTERNATIVE APPROACH - If Font Awesome doesn't work, use Unicode symbols */
-#b10 span:before {
-  content: "💾 " !important;
-  font-size: 14px !important;
-  margin-right: 4px !important;
+.xRgn {
+  animation: slideIn 0.3s ease-out !important;
 }
 
-#b13 span:before {
-  content: "❌ " !important;
-  font-size: 14px !important;
-  margin-right: 4px !important;
+/* ==========================================================================
+   ACCESSIBILITY IMPROVEMENTS
+   ========================================================================== */
+
+/* Focus indicators */
+*:focus {
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px !important;
 }
 
-#b3 span:before {
-  content: "🔄 " !important;
-  font-size: 14px !important;
-  margin-right: 4px !important;
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #000000;
+    --accent-color: #0000ff;
+    --danger-color: #ff0000;
+    --success-color: #008000;
+  }
 }
 
-#b4 span:before {
-  content: "👁️ " !important;
-  font-size: 14px !important;
-  margin-right: 4px !important;
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .xCfg > .xTb,
+  .xCfg > .xCb,
+  .xCfg > .xSb {
+    display: none !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 0 !important;
+    top: 0 !important;
+  }
+  
+  .xRgn {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid !important;
+  }
 }
