@@ -45,7 +45,7 @@
   line-height: 1.5 !important;
   color: var(--dark-gray) !important;
   background-color: #ffffff !important;
-  top: 40px !important;
+  top: 80px !important;
 }
 
 /* Page titles and headings use Montserrat */
@@ -67,7 +67,7 @@
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
   border: none !important;
   box-shadow: var(--box-shadow) !important;
-  top: 40px !important;
+  top: 30px !important;
   z-index: 1000 !important;
 }
 
@@ -138,7 +138,7 @@
   background: var(--secondary-color) !important;
   border-right: 1px solid var(--medium-gray) !important;
   width: 280px !important;
-  top: 100px !important;
+  top: 90px !important;
   left: 0 !important;
   padding: 20px 0 !important;
   box-shadow: 2px 0 4px rgba(0,0,0,0.05) !important;
@@ -187,7 +187,7 @@
    ========================================================================== */
 
 .xMainCfg > .xBody {
-  top: 100px !important;
+  top: 90px !important;
   left: 280px !important;
   padding: 20px !important;
   background-color: #f8f9fa !important;
@@ -483,12 +483,12 @@ table.xCatGrid tr:hover td {
   
   /* Adjust spacing for mobile */
   .xMainCfg > .xTb {
-    top: 35px !important;
+    top: 30px !important;
   }
   
   .xCfg > .xCb,
   .xMainCfg > .xBody {
-    top: 95px !important;
+    top: 90px !important;
   }
   
   .xTbBtns > a span {
