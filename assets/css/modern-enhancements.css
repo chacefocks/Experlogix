@@ -163,12 +163,29 @@
   transform: translateX(4px) !important;
 }
 
+.xCb a:focus {
+  background-color: rgba(249, 168, 25, 0.1) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  outline: none !important;
+}
+
+.xCb a:active {
+  background-color: rgba(249, 168, 25, 0.15) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  outline: none !important;
+}
+
 .xCb a[hasSel="1"] {
   background-color: rgba(249, 168, 25, 0.1) !important;
   border-left-color: #f9a819 !important;
   color: #f9a819 !important;
   transform: translateX(4px) !important;
   font-weight: 600 !important;
+  outline: none !important;
 }
 
 /* Error states in sidebar */
