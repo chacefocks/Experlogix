@@ -332,17 +332,39 @@
      * Initialize option card functionality
      */
     function initializeOptionCards() {
-        // Make entire option cards clickable
+        // Make ALL option cards clickable - target all possible containers
         document.addEventListener('click', function(e) {
-            const optionCard = e.target.closest('.xP');
+            // Look for various option container types
+            const optionCard = e.target.closest('.xP') || 
+                              e.target.closest('label') ||
+                              e.target.closest('[data-option]') ||
+                              e.target.closest('tr') ||
+                              e.target.closest('.option-card');
+            
             if (optionCard) {
-                const input = optionCard.querySelector('input[type="radio"], input[type="checkbox"]');
+                // Look for input in various ways
+                let input = optionCard.querySelector('input[type="radio"], input[type="checkbox"]') ||
+                           optionCard.previousElementSibling?.querySelector('input[type="radio"], input[type="checkbox"]') ||
+                           optionCard.nextElementSibling?.querySelector('input[type="radio"], input[type="checkbox"]');
+                
+                // If clicking on a label, find associated input
+                if (optionCard.tagName === 'LABEL') {
+                    const forAttr = optionCard.getAttribute('for');
+                    if (forAttr) {
+                        input = document.getElementById(forAttr);
+                    } else {
+                        input = optionCard.querySelector('input[type="radio"], input[type="checkbox"]');
+                    }
+                }
+                
                 if (input && !input.disabled) {
                     // For radio buttons, uncheck others in the same group first
                     if (input.type === 'radio') {
                         const radioGroup = document.querySelectorAll(`input[name="${input.name}"]`);
                         radioGroup.forEach(radio => {
-                            const card = radio.closest('.xP');
+                            const card = radio.closest('.xP') || 
+                                        radio.closest('label') || 
+                                        radio.parentElement;
                             if (card) {
                                 card.classList.remove('selected');
                             }
@@ -365,28 +387,137 @@
                     
                     // Trigger change event
                     input.dispatchEvent(new Event('change', { bubbles: true }));
+                    
+                    // Also trigger click event on the input for compatibility
+                    input.dispatchEvent(new Event('click', { bubbles: true }));
                 }
             }
         });
         
-        // Initialize existing selections
-        document.querySelectorAll('.xP input[type="radio"]:checked, .xP input[type="checkbox"]:checked').forEach(input => {
-            const card = input.closest('.xP');
+        // Initialize existing selections - check all possible containers
+        document.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').forEach(input => {
+            const card = input.closest('.xP') || 
+                        input.closest('label') || 
+                        input.parentElement;
             if (card) {
                 card.classList.add('selected');
             }
         });
         
+        // Convert all option containers to cards
+        setTimeout(() => {
+            // Find all radio buttons and checkboxes and convert their containers
+            document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
+                let container = input.closest('.xP') || 
+                               input.closest('label') || 
+                               input.parentElement;
+                
+                if (container && !container.classList.contains('option-card-converted')) {
+                    container.classList.add('option-card-converted');
+                    container.style.cssText += `
+                        display: inline-block !important;
+                        background: white !important;
+                        border: 2px solid #e9ecef !important;
+                        border-radius: 8px !important;
+                        padding: 15px !important;
+                        margin: 8px !important;
+                        cursor: pointer !important;
+                        transition: all 0.3s ease !important;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+                        position: relative !important;
+                        min-width: 180px !important;
+                        max-width: 280px !important;
+                        vertical-align: top !important;
+                    `;
+                    
+                    // Hide the actual input
+                    input.style.cssText += `
+                        position: absolute !important;
+                        opacity: 0 !important;
+                        pointer-events: none !important;
+                        width: 0 !important;
+                        height: 0 !important;
+                    `;
+                    
+                    // Add hover effect
+                    container.addEventListener('mouseenter', function() {
+                        this.style.borderColor = '#007bff';
+                        this.style.transform = 'translateY(-2px)';
+                        this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+                    });
+                    
+                    container.addEventListener('mouseleave', function() {
+                        if (!input.checked) {
+                            this.style.borderColor = '#e9ecef';
+                            this.style.transform = 'translateY(0)';
+                            this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                        }
+                    });
+                    
+                    // Update selection state
+                    if (input.checked) {
+                        container.style.borderColor = '#007bff';
+                        container.style.borderWidth = '3px';
+                        container.style.background = 'rgba(0, 123, 255, 0.05)';
+                        container.style.boxShadow = '0 0 0 2px rgba(0, 123, 255, 0.2)';
+                    }
+                }
+            });
+        }, 1000);
+        
         // Add keyboard support
         document.addEventListener('keydown', function(e) {
-            if (e.target.matches('.xP') && (e.key === 'Enter' || e.key === ' ')) {
+            if ((e.target.matches('.xP') || e.target.matches('label') || e.target.classList.contains('option-card-converted')) && 
+                (e.key === 'Enter' || e.key === ' ')) {
                 e.preventDefault();
                 e.target.click();
             }
         });
         
-        // Make cards focusable
-        document.querySelectorAll('.xP').forEach(card => {
+        // Make all option containers focusable
+        setTimeout(() => {
+            document.querySelectorAll('.xP, label, .option-card-converted').forEach(card => {
+                if (card.querySelector('input[type="radio"], input[type="checkbox"]')) {
+                    card.setAttribute('tabindex', '0');
+                    card.setAttribute('role', 'button');
+                    
+                    const input = card.querySelector('input[type="radio"], input[type="checkbox"]');
+                    if (input) {
+                        const labelText = card.textContent?.trim() || 
+                                         card.querySelector('td[ct="p"], td[ct="cp"]')?.textContent?.trim() ||
+                                         'Option';
+                        card.setAttribute('aria-label', labelText);
+                    }
+                }
+            });
+        }, 1500);
+    }
+    
+    // Also run option card initialization after a delay to catch dynamically loaded content
+    setTimeout(() => {
+        initializeOptionCards();
+    }, 2000);
+    
+    // Run it again after page interactions
+    document.addEventListener('DOMNodeInserted', function() {
+        setTimeout(initializeOptionCards, 500);
+    });
+    
+    // Legacy support for older browsers
+    if (typeof MutationObserver !== 'undefined') {
+        const observer = new MutationObserver(function(mutations) {
+            let shouldReinit = false;
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    shouldReinit = true;
+                }
+            });
+            if (shouldReinit) {
+                setTimeout(initializeOptionCards, 500);
+            }
+        });
+        
+        observer.observe(document.body, {
             card.setAttribute('tabindex', '0');
             card.setAttribute('role', 'button');
             
@@ -397,6 +528,9 @@
                     card.setAttribute('aria-label', label.textContent.trim());
                 }
             }
+            childList: true,
+            subtree: true
         });
+    }
     }
 })();
