@@ -1,646 +1,952 @@
-/*******************NOTES************************************************************
-This below CSS code is for style sheet MSCRM60-Borders.css Template UI ONLY!!
-it will not work properly if another Template is used, it will required modifications,
-it is recommended to create a new file if template will change.
-DO NOT TOUCH, only admin.
-*************************************************************************************/
+/*
+ * Modern Enhancements Stylesheet
+ * Complete modernization for Sunrise Medical Web Configurator
+ */
 
-// Hide unwanted sidebar options immediately when DOM loads
-function hideUnwantedSidebarOptions() {
-    // List of text content to hide (case insensitive)
-    var hideTexts = [
-        'owner',
-        'manual', 
-        'packaging',
-        'database',
-        'version',
-        'image'
-    ];
-    
-    // Get all sidebar links
-    var sidebarLinks = document.querySelectorAll('.xCb a, .xCbBtns a');
-    
-    sidebarLinks.forEach(function(link) {
-        var linkText = link.textContent || link.innerText || '';
-        var linkHref = link.getAttribute('href') || '';
-        var linkId = link.getAttribute('id') || '';
-        
-        // Check if link contains any of the unwanted text
-        var shouldHide = hideTexts.some(function(hideText) {
-            return linkText.toLowerCase().indexOf(hideText) !== -1 ||
-                   linkHref.toLowerCase().indexOf(hideText) !== -1 ||
-                   linkId.toLowerCase().indexOf(hideText) !== -1;
-        });
-        
-        if (shouldHide) {
-            // Multiple ways to hide the element
-            link.style.display = 'none';
-            link.style.visibility = 'hidden';
-            link.style.opacity = '0';
-            link.style.height = '0';
-            link.style.overflow = 'hidden';
-            link.style.position = 'absolute';
-            link.style.left = '-9999px';
-            
-            // Also hide parent if it's a container
-            if (link.parentNode) {
-                var parent = link.parentNode;
-                if (parent.children.length === 1) {
-                    parent.style.display = 'none';
-                }
-            }
-        }
-    });
-    
-    // Also hide by common IDs
-    var hideIds = [
-        'expCL001', 'expCL002', 'expCL_image', 'expCL_database', 
-        'expCL_version', 'expCL_owner', 'expCL_manual', 'expCL_packaging',
-        'expCL_ownersmanual', 'expCL_pack'
-    ];
-    
-    hideIds.forEach(function(id) {
-        var element = document.getElementById(id);
-        if (element) {
-            element.style.display = 'none';
-            element.style.visibility = 'hidden';
-        }
-    });
+/* ==========================================================================
+   FONTS
+   ========================================================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Muli:wght@300;400;500;600;700&display=swap');
+
+/* Font Awesome for modern icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* ==========================================================================
+   ROOT VARIABLES
+   ========================================================================== */
+
+:root {
+  --primary-color: #6c757d;
+  --primary-hover: #5a6268;
+  --secondary-color: #f8f9fa;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --dark-gray: #495057;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --box-shadow-hover: 0 4px 8px rgba(0,0,0,0.15);
+  --transition: all 0.3s ease;
 }
 
-/*functions below is to hide all the images based on NO from image category on any Browser*/
-//function triggers when NO is pick from Image Category due to the Formula 'contains JavaScript' that's link to it.
-function myfunctionhide()
-{
-//var (short for variable) images will  look for all css clases (its represented with a dot '.') 
-//that start with .XOB, .XOBDis, ,XOBErr and contain img[oi] description, this is what is used to look for any image that has that terminology
-	var images = document.querySelectorAll('.xOB img[oi], .xOBDis img[oi], .xOBErr img[oi]');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<images.length; i++)
-	{
-//var image will carry the result of the current images info that is in process at the time of the search
-		var image=images[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the image variable
-		image.style.cssText = "display: none;";
-	}
-	
-//var (short for variable) noneoption will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none description, and all that contains in it.
-	var noneoption = document.querySelectorAll('#none');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption.length; i++)
-	{
-//var empty will carry the result of the current noneoption info that is in process at the time of the search
-		var empty=noneoption[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the empty variable
-		empty.style.cssText = "display: none;";
-	}
-	
-//var (short for variable) noneoption1 will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none1 description, and all that contains in it.
-	var noneoption1 = document.querySelectorAll('#none1');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption1.length; i++)
-	{
-//var empty will carry the result of the current noneoption1 info that is in process at the time of the search
-		var empty1=noneoption1[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the empty variable
-		empty1.style.cssText = "margin-bottom: 13px;";
-	}	
-	
-//var (short for variable) noneoption2 will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none2 description, and all that contains in it.
-	var noneoption2 = document.querySelectorAll('#none2');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption2.length; i++)
-	{
-//var empty will carry the result of the current noneoption2 info that is in process at the time of the search
-		var empty2=noneoption2[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the empty variable
-		empty2.style.cssText = "margin-bottom: 13px;";
-	}
-	
-//var (short for variable) noneoption3 will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none3 description, and all that contains in it.
-	var noneoption3 = document.querySelectorAll('#none3');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption3.length; i++)
-	{
-//var empty will carry the result of the current noneoption3 info that is in process at the time of the search
-		var empty3=noneoption3[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the empty variable
-		empty3.style.cssText = "margin-bottom: 13px;";
-	}
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY
+   ========================================================================== */
 
-//var (short for variable) tool will  look for all css clases (its represented with a dot '.') 
-//that start with .mytooltip
-var tool = document.querySelectorAll('.mytooltip');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<tool.length; i++)
-	{
-//var image will carry the result of the current div info that is in process at the time of the search
-		var tip=tool[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the image variable
-		tip.style.cssText = "display: none;";
-	}
-}
-/*functions below is to Show all the images based on YES from image category on any Browser*/
-//function triggers when YES is pick from Image Category due to the Formula 'contains JavaScript' that's link to it.
-function myfunctionshow()
-{
-//var (short for variable) images will  look for all css clases (its represented with a dot '.') 
-//that start with .XOB, .XOBDis, ,XOBErr and contain img[oi] description, this is what is used to look for any image that has that terminology
-	var images = document.querySelectorAll('.xOB img[oi], .xOBDis img[oi], .xOBErr img[oi]');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<images.length; i++)
-	{
-//var image will carry the result of the current images info that is in process at the time of the search
-		var image=images[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:block (block is used to turn on all borders effects) //to every single result that is inside the image variable
-		image.style.cssText = "display: block;";
-	}
-//var (short for variable) imagenes will look for all css tags (its represented with symbol of the element, p for paragraph, 
-//img for image, div for division, etc.) that start with img
-	var imagenes = document.querySelectorAll('img');
-//for is used to do a search in every single result that comes back
-	for(var i = 0; i < imagenes.length; i++)
-	{
-//var img will carry the result of the current images info that is in process at the time of the search
-		var img = imagenes[i];
-//logic if along with command src.match will grab the current info that is in process at the time of the search inside variable img
-//and look if the description matches the exact name empty.png
-		if (img.src.match('empty.png'))
-		{
-//if it does, it will do the following instructions:
-//1.-turn off all special effect to images that has description as empty
-//2.-eliminated borders and styles around every single one, that matches
-//3.-do the same effect on IE but using only its commands for it (cross-browser fix)
-			img.style.cssText = "-webkit-box-shadow:none; box-shadow:none; margin-left:0px; margin-top:8px; border-style:none; filter:none;"
-		}
-	}
-//var (short for variable) noneoption will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none description, and all that contains in it.
-	var noneoption = document.querySelectorAll('#none');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption.length; i++)
-	{
-//var (short for variable) noneoption will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none description, and all that contains in it.
-//var empty will carry the result of the current noneoption info that is in process at the time of the search
-		var empty=noneoption[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:block (block is used to turn on all borders effects)to //every single result that is inside the empty variable
-		empty.style.cssText = "display: block;";
-	}
-	
-//var (short for variable) noneoption1 will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none1 description, and all that contains in it.
-	var noneoption1 = document.querySelectorAll('#none1');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption1.length; i++)
-	{
-//var empty will carry the result of the current noneoption1 info that is in process at the time of the search
-		var empty1=noneoption1[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the empty variable
-		empty1.style.cssText = "margin-bottom: 100px;";
-	}
-
-//var (short for variable) noneoption2 will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none2 description, and all that contains in it.
-	var noneoption2 = document.querySelectorAll('#none2');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption2.length; i++)
-	{
-//var empty will carry the result of the current noneoption2 info that is in process at the time of the search
-		var empty2=noneoption2[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the empty variable
-		empty2.style.cssText = "margin-bottom: 145px;";
-	}
-
-//var (short for variable) noneoption3 will  look for all css id's (its represented with a hash tag '#')  
-//that start with #none3 description, and all that contains in it.
-	var noneoption3 = document.querySelectorAll('#none3');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<noneoption3.length; i++)
-	{
-//var empty will carry the result of the current noneoption3 info that is in process at the time of the search
-		var empty3=noneoption3[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:none (none is used to turn off all borders effects) to //every single result that is inside the empty variable
-		empty3.style.cssText = "margin-bottom: 175px;";
-	}
-
-//var (short for variable) tool will  look for all css clases (its represented with a dot '.') 
-//that start with .mytooltip
-	var tool = document.querySelectorAll('.mytooltip');
-//for is used to do a search in every single result that comes back
-	for (var i=0; i<tool.length; i++)
-	{
-//var tip will carry the result of the current div info that is in process at the time of the search
-		var tip=tool[i];
-//style.cssText is a command that we will used to provide a new style with the current command display:block (block is used to turn on all borders effects) //to every single result that is inside the image variable
-		tip.style.cssText = "display: block;";
-	}
-}
-/*working functions below is to hide all the images when loading the configurator*/
-//document.addEventListener is a command of Javascript that tells to listen to all the code that is being load, or process at the time on running the program
-//but it only works in newer Browser and IE10 and above
-//document.attachEvent is a command of Javascript that tells to listen to all the code that is being load, or process at the time on running the program
-//but it only works in old Browsers and IE9 and less
-//the logic if along with the command checks if current Browser does not support addEventListener, if this is true will go into attachEvent command
-if (!document.addEventListener) 
-{
-//attachEvent will check if the current page is done from loading all the main structure (HTML,CSS,PHP,etc.) also know as DOM
-//once is done (known as onreadystatechange) it will call a function
-	document.attachEvent("onreadystatechange", function()
-	{
-//the function will check the DOM status and return true its complete
-		if (document.readyState === "complete" ) 
-		{
-			// Hide unwanted sidebar options
-			setTimeout(hideUnwantedSidebarOptions, 100);
-			
-//once completed, setTimeout command will run a function with an specific time(2000 miliseconds = 2 seconds) after, 
-//it will run and do the following instructions:
-			setTimeout(function emptyimages()
-			{
-//var (short for variable) imagenes will look for all css tags (its represented with symbol of the element, p for paragraph, 
-//img for image, div for division, etc.) that start with img
-				var imagenes = document.querySelectorAll('img');
-//for is used to do a search in every single result that comes back
-				for(var i = 0; i < imagenes.length; i++)
-				{
-//var img will carry the result of the current images info that is in process at the time of the search
-					var img = imagenes[i];	
-					img.disabled=true;
-//logic if along with command src.match will grab the current info that is in process at the time of the search inside variable img
-//and look if the description matches the exact name empty.png					
-					if (img.src.match('empty.png'))
-					{
-//if it does, it will do the following instructions:
-//1.-turn off all special effect to images that has description as empty
-//2.-eliminated borders and styles around every single one, that matches
-//3.-do the same effect on IE but using only its commands for it (cross-browser fix)
-						img.style.cssText = "-webkit-box-shadow:none; box-shadow:none; margin-left:0px; margin-top:8px; border-style:none; filter:none;"
-					}
-				}
-			}, 2000);
-			
-						// New code POP UP MSG per model//
-			setTimeout(function openAllCategories() 
-			{
-				var tata = document.getElementById("config_body");
-
-				if (tata) 
-				{
-					
-					var abuelo = tata.textContent;
-					var QTOR00 = "EDITED_ORDER_1";
-					
-					var  keywords= ["Bead Blast","Bead Blast Frame","Aztec Gold","Aztec Gold Frame","Green Apple","Green Apple Frame","Hot Sparkle Pink","Hot Sparkle Pink Frame","Sparkle Silver","Sparkle Silver Frame","Sunrise Orange","Sunrise Orange Frame","Yellow","Yellow Frame","Glossy White","Glossy White Frame","White","White<br>(ONLY for Zebra Color Fusion; if NO other Frame Std Color is chosen)","Black","Black Frame","Black Cherry","Black Cherry Frame","Black Opal","Black Opal Frame","Blue Opal","Blue Opal Frame","Candy Blue","Candy Blue Frame","Candy Purple","Candy Purple Frame","Candy Red","Candy Red Frame","Electric Blue","Electric Blue Frame","Evergreen","Evergreen Frame","Glow","Glow Frame","Mauve Pink","Mauve Pink Frame","Root Beer","Rootbeer","Rootbeer Frame","Titanium Finish Pnt","Titanium Color Paint","Titanium Color","Titanium (Color Paint)","Titanium","Titanium Color Paint Frame","Matte Black","Matte Black Frame","Matte Black Cherry","Matte Black Cherry Frame","Matte Electric Blue","Matte Electric Blue Frame","Matte Evergreen","Matte Evergreen Frame","Matte Purple","Mattle Purple","Matte Purple Frame","Desert Camouflage","Desert Camo","Desert Tan Frame","Mossy Oak Camouflage","Mossy Oak Camo","Stars and Stripes","Stars And Stripes","Stars & Stripes","Zebra","Aztec Gold - Handrim Clr","Bead Blast - Handrim Clr","Black  - Handrim Clr","Black Cherry - Handrim Clr","Black Opal - Handrim Clr","Blue Opal - Handrim Clr","Candy Blue - Handrim Clr","Candy Purple - Handrim Clr","Candy Red - Handrim Clr","Electric Blue - Handrim Clr","Evergreen - Handrim Clr","Glossy White - Handrim Clr","Glow - Handrim Clr","Green Apple - Handrim Clr","Hot Sparkle Pink - Handrim Clr","Mauve Pink - Handrim Clr","Rootbeer - Handrim Clr","Sparkle Silver - Handrim Clr","Sunrise Orange - Handrim Clr","Titanium Clr Pnt-Handrim Clr","Yellow - Handrim Clr","Matte Black - Handrim Clr","Matte Black Cherry-Handrim Clr","Matte Electrc Blue-Handrim Clr","Matte Evergreen - Handrim Clr","Matte Purple - Handrim Clr","Salute Green - Handrim Clr","Black Anodize Caster Only","Black Sideguard Color","Black Color","Blue Spoke Color","Green Spoke Color","Orange Spoke Color","Pink Spoke Color","Purple Spoke Color","Red Spoke Color","White Spoke Color","Yellow Spoke Color"];					
-					var found = keywords.some(function(code) {
-						return abuelo.includes(code);
-					});
-					
-					if (found) 
-					{
-						 console.warn("keywords found (2)");
-						
-						if (abuelo.includes(QTOR00))
-						{
-							console.warn("QTOR00 found (2)");
-							alert(`Dear Valued Customer:
- 
-Effective May 12, 2025, we are excited to announce 20 new exciting modern color options, as part of this introduction we have decided to discontinue several of the existing frame colors, these will no longer be available in the Configurator to select. The system will retain the original selection that was made when copying to a new order or quote. That original color will still appear in the order detail.
- 
-When making changes and/or revalidating a chair configuration do not select a frame color if you wish to keep the original frame color. It will remain selected in the background. Once you add that configuration to the cart, you will see that original frame color listed in the order detail. 
- 
-Feel free to select one of our new frame colors if your customer wants to switch from the discontinued color.
- 
-These discontinued frame colors will remain active on existing quotes & orders until August 12, 2025, or while supplies last.
-`);
-						} 
-						else 
-						{
-							console.warn("QTOR00 not found (2)");
-							//alert("This is a new order, no MSG to show.");
-						}
-						
-					} 
-					else 
-					{
-						 console.warn("keywords not found (2)");
-					}
-				} 
-				else 
-				{
-					// console.warn("config_body not found in the DOM.");
-				}
-			}, 8000);
-			// New code//
-			
-		}	
-	});
-}
-//this else-if will be true if previous logic (!document.addEventListener) was false, and also if command addEventListener is available for current Browser
-else if (document.addEventListener) 
-{
-//addEventListener will check if the current page is done from loading all the main structure (HTML,CSS,PHP,etc.) also know as DOM
-//once is done (known as DOMContentLoaded) it will call a function that will check the DOM status and return true its complete
-    document.addEventListener("DOMContentLoaded", function()
-	{
-		// Hide unwanted sidebar options
-		setTimeout(hideUnwantedSidebarOptions, 100);
-		
-//once completed, setTimeout command will run a function with an specific time(2000 miliseconds = 2 seconds) after, 
-//it will run and do the following instructions:
-		setTimeout(function emptyimages()
-		{
-//var (short for variable) imagenes will look for all css tags (its represented with symbol of the element, p for paragraph, 
-//img for image, div for division, etc.) that start with img
-			var imagenes = document.querySelectorAll('img');
-//for is used to do a search in every single result that comes back
-			for(var i = 0; i < imagenes.length; i++)
-			{
-//var img will carry the result of the current images info that is in process at the time of the search
-				var img = imagenes[i];
-//logic if along with command src.match will grab the current info that is in process at the time of the search inside variable img
-//and look if the description matches the exact name empty.png	
-				if (img.src.match('empty.png'))
-				{
-//if it does, it will do the following instructions:
-//1.-turn off all special effect to images that has description as empty
-//2.-eliminated borders and styles around every single one, that matches
-//3.-do the same effect on IE but using only its commands for it (cross-browser fix)
-					img.style.cssText = "-webkit-box-shadow:none; box-shadow:none; margin-left:0px; margin-top:8px; border-style:none; filter:none;"
-				}
-			}
-		}, 2000);
-		
-					// New code POP UP MSG per model//
-			setTimeout(function openAllCategories() 
-			{
-				var tata = document.getElementById("config_body");
-
-				if (tata) 
-				{
-					
-					var abuelo = tata.textContent;
-					var QTOR00 = "EDITED_ORDER_1";
-					
-					var  keywords= ["Bead Blast","Bead Blast Frame","Aztec Gold","Aztec Gold Frame","Green Apple","Green Apple Frame","Hot Sparkle Pink","Hot Sparkle Pink Frame","Sparkle Silver","Sparkle Silver Frame","Sunrise Orange","Sunrise Orange Frame","Yellow","Yellow Frame","Glossy White","Glossy White Frame","White","White<br>(ONLY for Zebra Color Fusion; if NO other Frame Std Color is chosen)","Black","Black Frame","Black Cherry","Black Cherry Frame","Black Opal","Black Opal Frame","Blue Opal","Blue Opal Frame","Candy Blue","Candy Blue Frame","Candy Purple","Candy Purple Frame","Candy Red","Candy Red Frame","Electric Blue","Electric Blue Frame","Evergreen","Evergreen Frame","Glow","Glow Frame","Mauve Pink","Mauve Pink Frame","Root Beer","Rootbeer","Rootbeer Frame","Titanium Finish Pnt","Titanium Color Paint","Titanium Color","Titanium (Color Paint)","Titanium","Titanium Color Paint Frame","Matte Black","Matte Black Frame","Matte Black Cherry","Matte Black Cherry Frame","Matte Electric Blue","Matte Electric Blue Frame","Matte Evergreen","Matte Evergreen Frame","Matte Purple","Mattle Purple","Matte Purple Frame","Desert Camouflage","Desert Camo","Desert Tan Frame","Mossy Oak Camouflage","Mossy Oak Camo","Stars and Stripes","Stars And Stripes","Stars & Stripes","Zebra","Aztec Gold - Handrim Clr","Bead Blast - Handrim Clr","Black  - Handrim Clr","Black Cherry - Handrim Clr","Black Opal - Handrim Clr","Blue Opal - Handrim Clr","Candy Blue - Handrim Clr","Candy Purple - Handrim Clr","Candy Red - Handrim Clr","Electric Blue - Handrim Clr","Evergreen - Handrim Clr","Glossy White - Handrim Clr","Glow - Handrim Clr","Green Apple - Handrim Clr","Hot Sparkle Pink - Handrim Clr","Mauve Pink - Handrim Clr","Rootbeer - Handrim Clr","Sparkle Silver - Handrim Clr","Sunrise Orange - Handrim Clr","Titanium Clr Pnt-Handrim Clr","Yellow - Handrim Clr","Matte Black - Handrim Clr","Matte Black Cherry-Handrim Clr","Matte Electrc Blue-Handrim Clr","Matte Evergreen - Handrim Clr","Matte Purple - Handrim Clr","Salute Green - Handrim Clr","Black Anodize Caster Only","Black Sideguard Color","Black Color","Blue Spoke Color","Green Spoke Color","Orange Spoke Color","Pink Spoke Color","Purple Spoke Color","Red Spoke Color","White Spoke Color","Yellow Spoke Color"];
-					
-					var found = keywords.some(function(code) {
-						return abuelo.includes(code);
-					});
-					
-					if (found) 
-					{
-						 console.warn("keywords found (1)");
-						
-						if (abuelo.includes(QTOR00))
-						{
-							console.warn("QTOR00 found (1)");
-							alert(`Dear Valued Customer:
- 
-Effective May 12, 2025, we are excited to announce 20 new exciting modern color options, as part of this introduction we have decided to discontinue several of the existing frame colors, these will no longer be available in the Configurator to select. The system will retain the original selection that was made when copying to a new order or quote. That original color will still appear in the order detail.
- 
-When making changes and/or revalidating a chair configuration do not select a frame color if you wish to keep the original frame color. It will remain selected in the background. Once you add that configuration to the cart, you will see that original frame color listed in the order detail. 
- 
-Feel free to select one of our new frame colors if your customer wants to switch from the discontinued color.
- 
-These discontinued frame colors will remain active on existing quotes & orders until August 12, 2025, or while supplies last.
-`);
-						} 
-						else 
-						{
-							console.warn("QTOR00 not found (1)");
-							//alert("This is a new order, no MSG to show.");
-						}
-						
-					} 
-					else 
-					{
-						 console.warn("keywords not found (1)");
-					}
-				} 
-				else 
-				{
-					// console.warn("config_body not found in the DOM.");
-				}
-			}, 8000);
-
-			// New code//
-		
-	},false);
+.xCfg {
+  font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: var(--dark-gray) !important;
+  background-color: #ffffff !important;
+  top: 80px !important;
 }
 
-// Also run the hide function after a delay to catch dynamically loaded content
-setTimeout(function() {
-    hideUnwantedSidebarOptions();
-    // Run it again after another delay
-    setTimeout(hideUnwantedSidebarOptions, 1000);
-    setTimeout(hideUnwantedSidebarOptions, 3000);
-}, 500);
+/* Page titles and headings use Montserrat */
+.xPage .expPageTitle,
+.xPage .xTitle,
+.xRgn > .xRgnHdr > span,
+.xRgn > .xRgnHdrGL > span {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+}
 
-/*working functions below is to hide all the images based on Reset option from main tool bar on any Browser*/
- //document.getElementById will look into the Page for any Element that has an ID of config_toolbar and once its found
- //it will add all the info it carries to var someElement
-var someElement = document.getElementById("config_toolBar");
-//document.addEventListener is a command of Javascript that tells to listen to all the code that is being load, or process at the time on running the program
-//but it only works in newer Browser and IE10 and above
-//document.attachEvent is a command of Javascript that tells to listen to all the code that is being load, or process at the time on running the program
-//but it only works in old Browsers and IE9 and less
+/* ==========================================================================
+   TOP TOOLBAR MODERNIZATION
+   ========================================================================== */
 
-//the logic if along with the someElement checks if current Browser does not support addEventListener, if this is true will go into attachEvent command
-if (!someElement.addEventListener) 
-{
-//attachEvent will check on the current page if the customer click on the id(button in page) that carries someElement and if it did, 
-//it will trigger an function and pass the info into evt
-    someElement.attachEvent("onclick", function(evt)
-	{
-//var result will carry the info thats on evt.srcElement command (evt has the id, and srcElement is a command to listen when you click on the screen)
-		var result = evt.srcElement;
-//logic if result.innerHTML value is equal to description Reset (innerHTML is a command used to grab the text from the id that was click)
-//will jump to setTimeout
-	    if (result.innerHTML === "Reset")
-	   {
-//setTimeout command will run a function with an specific time(1000 miliseconds = 1 seconds) after, 
-//it will run and do the following instructions:
-			setTimeout(function emptyimages()
-			{
-//var (short for variable) imagenes will look for all css tags (its represented with symbol of the element, p for paragraph, 
-//img for image, div for division, etc.) that start with img			
-				var imagenes = document.querySelectorAll('img');
-//for is used to do a search in every single result that comes back
-				for(var i = 0; i < imagenes.length; i++)
-				{
-//var img will carry the result of the current images info that is in process at the time of the search
-					var img = imagenes[i];
-//logic if along with command src.match will grab the current info that is in process at the time of the search inside variable img
-//and look if the description matches the exact name empty.png	
-					if (img.src.match('empty.png'))
-					{
-//if it does, it will do the following instructions:
-//1.-turn off all special effect to images that has description as empty
-//2.-eliminated borders and styles around every single one, that matches
-//3.-do the same effect on IE but using only its commands for it (cross-browser fix)
-						img.style.cssText = "-webkit-box-shadow:none; box-shadow:none; margin-left:0px; margin-top:8px; border-style:none; filter:none;"
-					}
-				}
-			}, 1000);
-	   }
-	});
+/* Main toolbar container */
+.xMainCfg > .xTb {
+  height: 60px !important;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+  border: none !important;
+  box-shadow: var(--box-shadow) !important;
+  top: 30px !important;
+  z-index: 1000 !important;
 }
-//this else will be true if previous logic (!someElement.addEventListener) was false
-else 
-{
-//addEventListener will check on the current page if the customer click on the id (button in page) that carries someElement and if it did, 
-//it will trigger an function and pass the info into evt
-    someElement.addEventListener("click", function(evt)
-	{
-//var result will carry the info thats on evt.Target command (evt has the id, and Target is a command to listen when you click on the screen)
-		var result = evt.target;
-//logic if result.innerHTML value is equal to description Reset (innerHTML is a command used to grab the text from the id that was click)
-//will jump to setTimeout
-	   if (result.innerHTML === "Reset")
-	   {
-//setTimeout command will run a function with an specific time(1000 miliseconds = 1 seconds) after, 
-//it will run and do the following instructions:
-			setTimeout(function emptyimages()
-			{
-//var (short for variable) imagenes will look for all css tags (its represented with symbol of the element, p for paragraph, 
-//img for image, div for division, etc.) that start with img	
-				var imagenes = document.querySelectorAll('img');
-//for is used to do a search in every single result that comes back
-				for(var i = 0; i < imagenes.length; i++)
-				{
-//var img will carry the result of the current images info that is in process at the time of the search
-					var img = imagenes[i];
-//logic if along with command src.match will grab the current info that is in process at the time of the search inside variable img
-//and look if the description matches the exact name empty.png	
-					if (img.src.match('empty.png'))
-					{
-//if it does, it will do the following instructions:
-//1.-turn off all special effect to images that has description as empty
-//2.-eliminated borders and styles around every single one, that matches
-//3.-do the same effect on IE but using only its commands for it (cross-browser fix)
-						img.style.cssText = "-webkit-box-shadow:none; box-shadow:none; margin-left:0px; margin-top:8px; border-style:none; filter:none;"
-					}
-				}
-			}, 1000);
-	   } 
-	},false);
+
+/* Toolbar buttons container */
+.xMainCfg > .xTb > .xTbBtns {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
 }
-/*Function below is to make big or small the images based on clicks*/
-/*also to change message based on the size*/
-/* empty.png or gray out image option will have turn off all features and no resize */
-function myfunctionalpha(e)
-{
-	var a = e.querySelectorAll('img');
-	var b = e.querySelectorAll('.mytooltip');
-	var c = e.parentNode.parentNode.className;
-	var d = e.parentNode.id;
-	if (a[0].src.match('empty.png') || c == "xOBDis")
-	{
-		//do nothing...
-	}
-	else
-	{
-		if (d == "img75")
-		{
-			if (a[0].width == "75")
-			{
-				b[0].innerHTML="Click to Shrink";
-				b[0].style.width="165px";
-				a[0].style.width="150px";
-				a[0].style.height="150px";
-			}
-			else 
-			{
-				b[0].innerHTML="Click to Expand";
-				b[0].style.width="90px";
-				a[0].style.width="75px";
-				a[0].style.height="75px";
-			}
-		}
-		else if (d == "img120")
-		{
-			if(a[0].width == "120")
-			{
-				b[0].innerHTML="Click to Shrink";
-				b[0].style.width="165px";
-				a[0].style.width="150px";
-				a[0].style.height="150px";
-			}
-			else
-			{
-				b[0].innerHTML="Click to Expand";
-				b[0].style.width="135px";
-				a[0].style.width="120px";
-				a[0].style.height="120px";
-			}
-		}
-		else
-		{
-			//do nothing...
-		}
-	}
+
+/* Individual toolbar buttons */
+.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 16px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 20px !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  transition: var(--transition) !important;
+  min-height: 36px !important;
+  margin: 0 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
-/*Function below is to show the description in the message box based on the image name*/
-/*also to include the message if image is not empty.png */
-/* empty.png or gray out image will show no bar description */
-function myfunctionbeta(e1)
-{
-	var a1 = e1.querySelectorAll('img');
-	var b1 = e1.querySelectorAll('.mytooltip');
-	var c1 = e1.parentNode.parentNode.className;
-	if (a1[0].src.match('empty.png') || c1 == "xOBDis")
-	{
-		b1[0].innerHTML="";
-	}
-	else
-	{
-		if (b1[0].innerHTML == "")
-		{
-			b1[0].innerHTML="Click to Expand";
-		}
-		else
-		{
-			//do nothing...
-		}
-	}
+
+.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14):hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
 }
-/*Function below is to return to nomal size the image when hovering over another option*/
-function myfunctiongamma(e2)
-{
-	var a2 = e2.querySelectorAll('img');
-	var b2 = e2.querySelectorAll('.mytooltip');
-	var c2 = e2.parentNode.parentNode.className;
-	var d2 = e2.parentNode.id;
-	{
-		if (a2[0].src.match('empty.png') || c2 == "xOBDis")
-		{
-			b2[0].innerHTML="";
-		}
-		else
-		{
-			if (d2 == "img75")
-			{
-				b2[0].innerHTML="Click to Expand";
-				b2[0].style.width="90px";
-				a2[0].style.width="75px";
-				a2[0].style.height="75px";
-			}
-			else if (d2 == "img120")
-			{
-				b2[0].innerHTML="Click to Expand";
-				b2[0].style.width="135px";
-				a2[0].style.width="120px";
-				a2[0].style.height="120px";
-			}
-			else
-			{
-				//do nothing...
-			}
-		}
-	}
+
+/* Button text styling */
+.xTbBtns > a span {
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  margin-left: 8px !important;
+  margin-top: 0 !important;
+}
+
+/* Hide old button images */
+.xTbBtns img {
+  display: none !important;
+}
+
+/* Add Font Awesome icons to buttons */
+#b10:before { content: "\f0c7"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b13:before { content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b3:before { content: "\f2f9"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b4:before { content: "\f06e"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+
+/* Hide specific buttons */
+#b21 { display: none !important; }
+
+/* ==========================================================================
+   HIDDEN SIDEBAR OPTIONS
+   ========================================================================== */
+
+/* Hide specific sidebar categories that should remain hidden */
+#expCL001 { display: none !important; } /* First category (already hidden) */
+#expCL002 { display: none !important; } /* Image category */
+
+/* Hide database version, owner's manual, and other system categories */
+.xCb a[href*="database"],
+.xCb a[href*="version"],
+.xCb a[href*="manual"],
+.xCb a[href*="owner"],
+.xCb a[contains(text(), 'Database')],
+.xCb a[contains(text(), 'Version')],
+.xCb a[contains(text(), 'Manual')],
+.xCb a[contains(text(), 'Image')] {
+  display: none !important;
+}
+
+/* Alternative approach - hide by ID if they have specific IDs */
+#expCL_database,
+#expCL_version,
+#expCL_manual,
+#expCL_image {
+  display: none !important;
+}
+
+/* Hide additional system categories that should remain hidden */
+.xCb a[href*="packaging"],
+.xCb a[href*="owner"],
+.xCb a[href*="manual"],
+.xCb a[contains(text(), 'Packaging')],
+.xCb a[contains(text(), 'Owner')],
+.xCb a[contains(text(), 'Manual')],
+.xCb a[contains(text(), 'PACKAGING')],
+.xCb a[contains(text(), 'OWNER')],
+.xCb a[contains(text(), 'MANUAL')] {
+  display: none !important;
+}
+
+/* Hide by common IDs for these categories */
+#expCL_packaging,
+#expCL_owner,
+#expCL_ownersmanual,
+#expCL_manual,
+.xCb a[id*="packaging"],
+.xCb a[id*="owner"],
+.xCb a[id*="manual"] {
+  display: none !important;
+}
+
+/* Hide any links that contain these keywords in their text content */
+.xCb a:contains("Owner's Manual"),
+.xCb a:contains("Packaging"),
+.xCb a:contains("OWNER'S MANUAL"),
+.xCb a:contains("PACKAGING") {
+  display: none !important;
+}
+
+/* More aggressive hiding - target by position and common patterns */
+.xCb a[href*="owner"],
+.xCb a[href*="Owner"],
+.xCb a[href*="OWNER"],
+.xCb a[href*="manual"],
+.xCb a[href*="Manual"],
+.xCb a[href*="MANUAL"],
+.xCb a[href*="packaging"],
+.xCb a[href*="Packaging"],
+.xCb a[href*="PACKAGING"],
+.xCb a[href*="pack"],
+.xCb a[href*="Pack"],
+.xCb a[href*="PACK"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide by common text patterns - more comprehensive */
+.xCb a {
+  /* This will be overridden by JavaScript if needed */
+}
+
+/* Target last few items in sidebar if they're the problematic ones */
+.xCb a:nth-last-child(-n+3) {
+  /* We'll check if these are the owner's manual/packaging items */
+}
+
+/* Force hide any element containing these words anywhere */
+*[id*="owner" i],
+*[id*="manual" i],
+*[id*="packaging" i],
+*[class*="owner" i],
+*[class*="manual" i],
+*[class*="packaging" i] {
+  display: none !important;
+}
+
+/* Hide parent containers that might contain these items */
+.xCb > *:has(a[href*="owner"]),
+.xCb > *:has(a[href*="manual"]),
+.xCb > *:has(a[href*="packaging"]) {
+  display: none !important;
+}
+/* ==========================================================================
+   SIDEBAR MODERNIZATION
+   ========================================================================== */
+
+.xCfg > .xCb {
+  background: var(--secondary-color) !important;
+  border-right: 1px solid var(--medium-gray) !important;
+  width: 280px !important;
+  top: 90px !important;
+  left: 0 !important;
+  padding: 20px 0 !important;
+  box-shadow: 2px 0 4px rgba(0,0,0,0.05) !important;
+}
+
+/* Sidebar links */
+.xCb a {
+  display: block !important;
+  padding: 8px 20px !important;
+  color: var(--dark-gray) !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  border-left: 3px solid transparent !important;
+  transition: var(--transition) !important;
+  margin: 1px 0 !important;
+}
+
+.xCb a:hover {
+  background-color: rgba(249, 168, 25, 0.1) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+}
+
+.xCb a:focus {
+  background-color: rgba(249, 168, 25, 0.1) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  outline: none !important;
+}
+
+.xCb a:active {
+  background-color: rgba(249, 168, 25, 0.15) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  outline: none !important;
+}
+
+.xCb a[hasSel="1"] {
+  background-color: rgba(249, 168, 25, 0.1) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  font-weight: 600 !important;
+  outline: none !important;
+}
+
+/* Error states in sidebar */
+.xCbBtns > a.xCbErr {
+  background-color: var(--danger-color) !important;
+  color: white !important;
+  border-left-color: #c82333 !important;
+}
+
+.xCbBtns > a.xCbErr:hover {
+  background-color: #c82333 !important;
+}
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
+
+.xMainCfg > .xBody {
+  top: 90px !important;
+  left: 280px !important;
+  padding: 20px !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Page container */
+.xPage {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
+   SECTION CONTAINERS (ROUNDED BOXES)
+   ========================================================================== */
+
+/* Option containers - force full width layout */
+.xOB, .xOBDis, .xOBErr {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  /* Reset any existing layout */
+  clear: both !important;
+  overflow: visible !important;
+}
+
+/* Individual option items */
+.xOB > *, .xOBDis > *, .xOBErr > * {
+  /* Remove default styling */
+  flex: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+}
+
+/* ALL option containers - redesign as cards */
+.xP,
+.xOB .xP,
+.xOBDis .xP,
+.xOBErr .xP,
+.xRgn .xP,
+table.xCatGrid tr,
+.xCatGrid tr {
+  display: inline-block !important;
+  background: white !important;
+  border: 2px solid var(--medium-gray) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 15px !important;
+  margin: 8px !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  position: relative !important;
+  min-width: 180px !important;
+  max-width: 280px !important;
+  vertical-align: top !important;
+  width: auto !important;
+}
+
+/* Target radio button and checkbox containers specifically */
+.xRgn input[type="radio"] + label,
+.xRgn input[type="checkbox"] + label,
+.xRgn label:has(input[type="radio"]),
+.xRgn label:has(input[type="checkbox"]),
+.xRgn .xP:has(input[type="radio"]),
+.xRgn .xP:has(input[type="checkbox"]) {
+  display: inline-block !important;
+  background: white !important;
+  border: 2px solid var(--medium-gray) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 15px !important;
+  margin: 8px !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  position: relative !important;
+  min-width: 180px !important;
+  max-width: 280px !important;
+  vertical-align: top !important;
+}
+.xP:hover {
+  border-color: var(--accent-color) !important;
+  box-shadow: var(--box-shadow-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Selected state */
+.xP:has(input[type="radio"]:checked),
+.xP:has(input[type="checkbox"]:checked),
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label,
+label:has(input[type="radio"]:checked),
+label:has(input[type="checkbox"]:checked) {
+  border-color: var(--accent-color) !important;
+  border-width: 3px !important;
+  background: rgba(0, 123, 255, 0.05) !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2) !important;
+}
+
+/* Hide ALL radio buttons and checkboxes */
+input[type="radio"],
+input[type="checkbox"],
+.xP input[type="radio"],
+.xP input[type="checkbox"],
+.xRgn input[type="radio"],
+.xRgn input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  z-index: -1 !important;
+}
+
+/* More aggressive hiding - target all possible radio/checkbox selectors */
+input[type="radio"],
+input[type="checkbox"],
+*[type="radio"],
+*[type="checkbox"],
+.xCfg input[type="radio"],
+.xCfg input[type="checkbox"],
+.xCfg *[type="radio"],
+.xCfg *[type="checkbox"],
+table input[type="radio"],
+table input[type="checkbox"],
+td input[type="radio"],
+td input[type="checkbox"],
+tr input[type="radio"],
+tr input[type="checkbox"],
+div input[type="radio"],
+div input[type="checkbox"],
+span input[type="radio"],
+span input[type="checkbox"],
+label input[type="radio"],
+label input[type="checkbox"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* Make sure all option text is visible and styled */
+.xRgn label,
+.xRgn .xP label,
+.xRgn span,
+.xRgn .xP span {
+  display: block !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  color: var(--dark-gray) !important;
+  text-align: center !important;
+  line-height: 1.4 !important;
+}
+/* Style the labels and content */
+.xP td {
+  display: block !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.xP td[ct="c"] {
+  display: none !important; /* Hide the radio button cell */
+}
+
+.xP td[ct="p"],
+.xP td[ct="cp"] {
+  display: block !important;
+  width: 100% !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  color: var(--dark-gray) !important;
+  line-height: 1.4 !important;
+}
+
+/* Images within options */
+.xP img,
+.xOB img[oi],
+.xOBDis img[oi],
+.xOBErr img[oi] {
+  display: block !important;
+  margin: 0 auto 10px auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 4px !important;
+}
+
+/* Text content styling */
+.xP .fb,
+.xP .sb,
+.xP .tb {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 5px 0 !important;
+}
+
+.xP .sb {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: var(--dark-gray) !important;
+}
+
+.xP .tb {
+  font-size: 12px !important;
+  color: var(--primary-color) !important;
+  margin-left: 0 !important;
+}
+
+/* Disabled state */
+.xOBDis .xP {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background: var(--light-gray) !important;
+}
+
+.xOBDis .xP:hover {
+  transform: none !important;
+  border-color: var(--medium-gray) !important;
+}
+
+/* Error state */
+.xOBErr .xP {
+  border-color: var(--danger-color) !important;
+  background: rgba(220, 53, 69, 0.05) !important;
+}
+
+/* Add selection indicator */
+.xP:has(input[type="radio"]:checked):before,
+.xP:has(input[type="checkbox"]:checked):before,
+input[type="radio"]:checked + label:before,
+input[type="checkbox"]:checked + label:before,
+label:has(input[type="radio"]:checked):before,
+label:has(input[type="checkbox"]:checked):before {
+  content: "\f00c" !important;
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  color: var(--accent-color) !important;
+  font-size: 16px !important;
+  background: white !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.xRgn {
+  background: white !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--box-shadow) !important;
+  margin-bottom: 20px !important;
+  overflow: hidden !important;
+  transition: var(--transition) !important;
+}
+
+.xRgn:hover {
+  box-shadow: var(--box-shadow-hover) !important;
+}
+
+/* Section headers */
+.xRgn > .xRgnHdr,
+.xRgn > .xRgnHdrGL {
+  background: linear-gradient(135deg, var(--light-gray) 0%, var(--medium-gray) 100%) !important;
+  border: none !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  position: relative !important;
+}
+
+.xRgn > .xRgnHdr:hover,
+.xRgn > .xRgnHdrGL:hover {
+  background: linear-gradient(135deg, var(--medium-gray) 0%, #dee2e6 100%) !important;
+}
+
+.xRgn > .xRgnHdr > span,
+.xRgn > .xRgnHdrGL > span {
+  font-size: 16px !important;
+  color: var(--dark-gray) !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Add collapse/expand icons */
+.xRgn > .xRgnHdr > span:after,
+.xRgn > .xRgnHdrGL > span:after {
+  content: "\f107" !important;
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  margin-left: auto !important;
+  transition: transform 0.3s ease !important;
+}
+
+.xRgn[collapsed] > .xRgnHdr > span:after,
+.xRgn[collapsed] > .xRgnHdrGL > span:after {
+  transform: rotate(-90deg) !important;
+}
+
+/* Section content */
+.xRgn .xInner {
+  padding: 20px !important;
+  border: none !important;
+  display: block !important;
+  transition: none !important;
+}
+
+/* Collapsed sections */
+.xRgn[collapsed] .xInner {
+  display: none !important;
+}
+
+/* Error states for sections */
+.xRgn[err] {
+  border-left: 4px solid var(--danger-color) !important;
+}
+
+.xRgn[err] > .xRgnHdr,
+.xRgn[err] > .xRgnHdrGL {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+  color: var(--danger-color) !important;
+}
+
+.xRgn[err] > .xRgnHdr > span,
+.xRgn[err] > .xRgnHdrGL > span {
+  color: var(--danger-color) !important;
+}
+
+/* ==========================================================================
+   FORM CONTROLS MODERNIZATION
+   ========================================================================== */
+
+/* Input fields */
+input[type="text"],
+textarea,
+.xP input,
+.xP textarea {
+  font-family: 'Muli', sans-serif !important;
+  border: 1px solid var(--medium-gray) !important;
+  border-radius: 4px !important;
+  padding: 8px 12px !important;
+  transition: var(--transition) !important;
+  background-color: white !important;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+.xP input:focus,
+.xP textarea:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+  outline: none !important;
+}
+
+input[type="text"]:hover,
+textarea:hover,
+.xP input:hover,
+.xP textarea:hover {
+  border-color: var(--primary-color) !important;
+}
+
+/* Combo boxes */
+.xComboBox > .xComboEdit {
+  border: 1px solid var(--medium-gray) !important;
+  border-radius: 4px 0 0 4px !important;
+  background-color: white !important;
+}
+
+.xComboBox > .xImage {
+  border: 1px solid var(--medium-gray) !important;
+  border-left: none !important;
+  border-radius: 0 4px 4px 0 !important;
+  background-color: var(--light-gray) !important;
+}
+
+.xComboBox:hover .xComboEdit,
+.xComboBox:hover .xImage {
+  border-color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--medium-gray) !important;
+  border-radius: 4px !important;
+  transition: var(--transition) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color) !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--light-gray) !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--medium-gray) var(--light-gray) !important;
+}
+
+/* ==========================================================================
+   BUTTONS AND INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+/* General button styling */
+.xRgn a[display='button'] {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  transition: var(--transition) !important;
+  cursor: pointer !important;
+}
+
+.xRgn a[display='button']:hover {
+  background: var(--accent-hover) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--box-shadow-hover) !important;
+}
+
+/* ==========================================================================
+   TABLES AND GRIDS
+   ========================================================================== */
+
+table.xCatGrid {
+  background: white !important;
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+  box-shadow: var(--box-shadow) !important;
+}
+
+table.xCatGrid th {
+  background: var(--light-gray) !important;
+  color: var(--dark-gray) !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 600 !important;
+  padding: 12px 8px !important;
+  border-bottom: 1px solid var(--medium-gray) !important;
+}
+
+table.xCatGrid td {
+  padding: 10px 8px !important;
+  border-bottom: 1px solid #f8f9fa !important;
+  transition: var(--transition) !important;
+}
+
+table.xCatGrid tr:hover td {
+  background-color: rgba(0, 123, 255, 0.05) !important;
+}
+
+/* ==========================================================================
+   MODAL DIALOGS
+   ========================================================================== */
+
+#overlayDlg {
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+  overflow: hidden !important;
+}
+
+#overlayDlg > .overlayDlg_title {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+#overlayDlg > .overlayDlg_title > span {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  color: white !important;
+}
+
+/* ==========================================================================
+   STATUS BAR
+   ========================================================================== */
+
+.xCfg > .xSb {
+  background: var(--light-gray) !important;
+  border-top: 1px solid var(--medium-gray) !important;
+  color: var(--dark-gray) !important;
+  font-family: 'Muli', sans-serif !important;
+  padding: 8px 20px !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .xCfg > .xCb {
+    width: 240px !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 240px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .xCfg > .xCb {
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 0 !important;
+  }
+  
+  /* Adjust spacing for mobile */
+  .xMainCfg > .xTb {
+    top: 30px !important;
+  }
+  
+  .xCfg > .xCb,
+  .xMainCfg > .xBody {
+    top: 90px !important;
+  }
+  
+  .xTbBtns > a span {
+    display: none !important;
+  }
+  
+  .xTbBtns > a {
+    padding: 10px !important;
+    min-width: 40px !important;
+  }
+}
+
+/* ==========================================================================
+   ANIMATIONS AND TRANSITIONS
+   ========================================================================== */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xRgn {
+  animation: slideIn 0.3s ease-out !important;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY IMPROVEMENTS
+   ========================================================================== */
+
+/* Focus indicators */
+*:focus {
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #000000;
+    --accent-color: #0000ff;
+    --danger-color: #ff0000;
+    --success-color: #008000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .xCfg > .xTb,
+  .xCfg > .xCb,
+  .xCfg > .xSb {
+    display: none !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 0 !important;
+    top: 0 !important;
+  }
+  
+  .xRgn {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid !important;
+  }
 }

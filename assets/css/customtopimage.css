@@ -1,453 +1,952 @@
-﻿/*******************NOTES************************************************************
-This below CSS code is for style sheet MSCRM60-Borders.css Template UI ONLY!!
-it will not work properly if another Template is used, it will required modifications,
-it is recommended to create a new file if template will change.
-DO NOT TOUCH, only admin.
-*************************************************************************************/
-
-/****************NOTE******************************************************************
-**All of the below CSS code is for style sheet Core.css part of the MSCRM60-Borders.css
-**The Core.css is located in Common Folder inside the Styles Folder
-**Never Touch or Modify Directly the Core.css, unless 100% sure what you are doing
-*****************NOTE******************************************************************/
-
-/***Whole Page**/
-.xCfg{font-family:Open Sans,Segoe UI,Segoe,Tahoma,Helvetica,Arial,sans-serif; font-size:12px; background-color:#ffffff; color:#666; width:auto; height:auto;}
-.xCfg{top:80px;}
-/**IE10 & IE11 only**/
-/* 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-{
-	.xCfg1{right:17px;}
-}
-*/
-/***Edge Browser 12+ for Windows 10 (all MS Edge)***/
 /*
-@supports ( -ms-accelerator:true ) 
-{
-.xCfg1{right:15px;}
-}
-*/
+ * Modern Enhancements Stylesheet
+ * Complete modernization for Sunrise Medical Web Configurator
+ */
 
-.xOB{padding-bottom:0px;} /*to eliminate 5px of extra space above reset section is hidden*/
+/* ==========================================================================
+   FONTS
+   ========================================================================== */
 
-/**Inner Page, Position(everything except for top menu)**/
-.xMainCfg>.xBody,.xMainCfg>.xCb{top:68px;}
-.xPage{margin-right:0px;}
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Muli:wght@300;400;500;600;700&display=swap');
 
-/***Top Menu, Box
- at hovering Level***/
-.xTbBtns>a:hover{cursor: pointer;background: none repeat scroll 0% 0% ;}
+/* Font Awesome for modern icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-/***Top Menu, Descriptions***/
-.xTb>.xTbBtns>a,.xRgnTb>.xTbBtns>a,.xMsgTb>.xTbBtns>a{color:#666; -moz-text-overflow:ellipsis; text-overflow:ellipsis; float:none; display:inline-block;}
+/* ==========================================================================
+   ROOT VARIABLES
+   ========================================================================== */
 
-/***Top Menu Box, Position***/
-.xMainCfg>.xTb{height:44px; background:#f9a819; top:30px; z-index:1;}
-
-/***Tool Bar Box Menu. Link Description
- (Link for More info)**/
-.xRgnTb>.xRgnTbCaption,.xRgnTb>.xTbBtns>a{color:#ffffff;}
-
-/***Tool Bar Box Menu**/
-.xRgn>.xRgnTb{background:#f9a819; height:28px;}
-
-/***Tool Bar Box Menu,
- 2nd Box contains menu options (save and close,etc)**/
-.xCfg>.xTb>.xTbBtns{top:8px; left:15px;}
-
-/***Tool Bar Box Menu,
- 2nd Box contains menu options (save and close,etc) but at Span Level**/
-.xTbBtns span{color:#FFFFFF; font-weight:bold; font-size:13px; margin-top:-2px;}
-
-/**Super Category/ Left Bar Menu,
- but at link Level when picked**/
-.xCb a[hasSel="1"]{color:#bd7b04!important;}
-
-/***Super Category/ Left Bar Menu***/
-.xCfg>.xCb{left:0px; /**any browser**/background:rgba(234,231,231,1)!important; /**IE only**/background:rgb(234,231,231)\9; width:167px; overflow-y:hidden!important; margin-top:6px;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.xCfg>.xCb{background:transparent;}
-	.xCfg>.xCb:nth-child(n){filter:none;}
+:root {
+  --primary-color: #6c757d;
+  --primary-hover: #5a6268;
+  --secondary-color: #f8f9fa;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --dark-gray: #495057;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --box-shadow-hover: 0 4px 8px rgba(0,0,0,0.15);
+  --transition: all 0.3s ease;
 }
 
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY
+   ========================================================================== */
 
-/***Super Category/ Left Bar Menu,
- at hovering Level***/
-.xCbBtns>a:hover{background-color:#f9a819; color:#FFFFFF!important; font-weight:bold;}
-
-/***Super Category/ Left Bar Menu,
- at focus Level***/
-.xCbBtns>a:focus{background-color:#d0d3d6; color:#e59200!important; font-weight:bold;}
-
-/***Category Menu, Size***/
-.xRgn>.xRgnHdr{margin-top:0px; /*height:25px;*/ padding-left:14px;}
-
-/***Category Menu,
- but at Span Level***/
-.xRgn>.xRgnHdr>span{font-size:15px; color:#666; font-weight:bold; cursor:pointer; margin-top:-3px;}
-
-/***Category Menu, Right Bar Menu***/
-.xRgnHdr{/**any browser**/background:rgba(227,225,225,1)!important; /**IE7,IE8,IE9 only**/background:rgb(227,225,225)\9;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.xRgnHdr{background:transparent;}
-	.xRgnHdr:nth-child(n){filter:none;}
+.xCfg {
+  font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: var(--dark-gray) !important;
+  background-color: #ffffff !important;
+  top: 80px !important;
 }
 
-/***Errors**/
-/***the below CSS is to give an red color background when an error occurred on the right side (inner page)***/
-.xRgn[err]>.xRgnHdr{/**any browser**/background:rgba(218,22,22,0.85)!important; /**IE7,IE8,IE9 only**/background:rgb(218,22,22)\9; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#d8DA1616,endColorstr=#d8DA1616)\9; zoom: 1\9;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.xRgn[err]>.xRgnHdr{background:transparent;}
-	.xRgn[err]>.xRgnHdr:nth-child(n){filter:none;}
+/* Page titles and headings use Montserrat */
+.xPage .expPageTitle,
+.xPage .xTitle,
+.xRgn > .xRgnHdr > span,
+.xRgn > .xRgnHdrGL > span {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
 }
 
-/***the below CSS is to give an red color background when an error occurred on the left side when Hovering (super categories)**/
-.xCbBtns>a.xCbErr{/**any browser**/background:rgba(218,22,22,0.85)!important; /**IE7,IE8,IE9 only**/background:rgb(218,22,22)\9; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#d8DA1616,endColorstr=#d8DA1616\9); zoom: 1\9; color:#ffffff;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.xCbBtns>a.xCbErr{background:transparent;}
-	.xCbBtns>a.xCbErr:nth-child(n){filter:none;}
+/* ==========================================================================
+   TOP TOOLBAR MODERNIZATION
+   ========================================================================== */
+
+/* Main toolbar container */
+.xMainCfg > .xTb {
+  height: 60px !important;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+  border: none !important;
+  box-shadow: var(--box-shadow) !important;
+  top: 30px !important;
+  z-index: 1000 !important;
 }
 
-/***the below CSS is to give an red color background when an error occurred in an toolbar box*/
-.xRgn[err]>.xRgnTb{/**any browser**/background:rgba(218,22,22,0.85)!important; /**IE7,IE8,IE9 only**/background:rgb(218,22,22)\9; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#d8DA1616,endColorstr=#d8DA1616\9); zoom: 1\9; color:#ffffff;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.xRgn[err]>.xRgnTb{background:transparent;}
-	.xRgn[err]>.xRgnTb:nth-child(n){filter:none;}
+/* Toolbar buttons container */
+.xMainCfg > .xTb > .xTbBtns {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
 }
 
-/***the below CSS is to give an orange/yellow color background when an error occurred on the right side under categories, in the options*/
-.xRgn[err]{/**any browser**/background:rgba(255,216,139,1)!important; /**IE7,IE8,IE9 only**/background:rgb(255,216,139)\9; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffFFD88B,endColorstr=#ffFFD88B\9); zoom: 1\9;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.xRgn[err]{background:transparent;}
-	.xRgn[err]:nth-child(n){filter:none;}
+/* Individual toolbar buttons */
+.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 16px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 20px !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  transition: var(--transition) !important;
+  min-height: 36px !important;
+  margin: 0 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
 
-/***the below CSS is to give an red color background when an error occurred in the Fix Error Button***//*No longer in service, we dont use fix button*/
-.xTbBtns>a#b6{color:#ffffff; /**any browser**/background:rgba(218,22,22,0.85)!important; /**IE7,IE8,IE9 only**/background:rgb(218,22,22)\9; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#d8DA1616,endColorstr=#d8DA1616)\9; zoom:1\9;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.xTbBtns>a#b6{background:transparent;}
-	.xTbBtns>a#b6:nth-child(n){filter:none;}
+.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14):hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
 }
 
-/**the below CSS is to hide the First Category of all**/
-#expCL001{display:none;}
-/*added Sequence 2, as image is now 2 and message at top is 1*/
-/*#expCL002{display:none;}*/
-
-/**the below CSS is the div that carries the image message next to the Yes and No options from the Category Image**/
-#note{position:absolute; left:135px; top:27px; font-size:12px; font-weight:bold;}
-/**when message is added turn off top, and turn on below**/
-/*#note{position:absolute; left:135px; top:76px; font-size:12px; font-weight:bold;}*/
-
-/** to prive and extra space after the reset button to match alignment with the rest of the image/options**/
-#none0{margin-bottom: 13px;} /*this is for normal default*/
-#none1{margin-bottom: 100px;} /*this is for 75px*/
-#none2{margin-bottom: 145px;} /*this is for 120px*/
-#none3{margin-bottom: 175px;} /*this is for 150px*/
-
-/**the below CSS is to align any image at the top of the description*/
-.xOB img[oi],.xOBDis img[oi],.xOBErr img[oi]{float:none; display:block;}
-
-/**the below CSS is for the window pop up Experlogix, to provide the position of the title on the top left side of the screen with font 13px and bold*/
-#overlayDlg>.overlayDlg_title>span{float:left; color:#ffffff; font-size:13px; font-weight:bold; padding-top:2px; padding-left:10px;}
-
-/**the below CSS is for the window pop up Experlogix, to provide a position to the background image (only, otherwise it wont be call)**/
-#overlayDlg >.overlayDlg_title >img{float:right; height:21px; width:21px; padding-top:1px; padding-right:4px;}
-
-/**the below CSS is for the window pop up Experlogix, to provide background color orange with height of 24px and border with corners (only, otherwise it wont be call)**/
-#overlayDlg >.overlayDlg_title {background:#f9a819;}
-
-/**fix to prevent square border in IE10 & IE11 + **/
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-{
-	#img75 img, #img120 img, #img150 img{border-radius:5px!important;}
+/* Button text styling */
+.xTbBtns > a span {
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  margin-left: 8px !important;
+  margin-top: 0 !important;
 }
 
-#img75 img, #img120 img, #img150 img{
-border-style:solid; border-color:#ffc780; -webkit-border-radius:5px; -moz-border-radius:5px; border-width:2px;
-  /*******************************NOTE****************************************************************
-  The Below CSS code is only for IE8 & IE9 to substitute Box Shadow CSS3, because CSS3 library doesn't 
-  work in IE9 and below, only in IE10 and above, No problem with any other Browser. (only, otherwise it wont be call)
-  ****************************************************************************************************/
-filter:progid:DXImageTransform.Microsoft.DropShadow(OffX=4, OffY=4, Color=#7c7c7c) progid:DXImageTransform.Microsoft.Chroma(Color='#ffffff')\9; zoom:1\9;
-  /*******************************NOTE****************************************************************
-  The Above CSS code is only for IE8 & IE9 to substitute Box Shadow CSS3, because CSS3 library doesn't 
-  work in IE9 and below, only in IE10 and above, No problem with any other Browser. (only, otherwise it wont be call)
-  ****************************************************************************************************/
- /**any browser**/
- -webkit-box-shadow:3px 3px 3px #7C7C7C;
- box-shadow:3px 3px 3px #7C7C7C;
- -webkit-transition:all 0.3s ease;
- -moz-transition:all 0.3s ease;
- -o-transition:all 0.3s ease;
- -ms-transition:all 0.3s ease;
- transition:all 0.3s ease;
+/* Hide old button images */
+.xTbBtns img {
+  display: none !important;
 }
 
-/**the below css its for the id on the template of 75 to provide its default size***/
-#img75 img{
-  height:75px;
-  width:75px;
+/* Add Font Awesome icons to buttons */
+#b10:before { content: "\f0c7"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b13:before { content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b3:before { content: "\f2f9"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+#b4:before { content: "\f06e"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+
+/* Hide specific buttons */
+#b21 { display: none !important; }
+
+/* ==========================================================================
+   HIDDEN SIDEBAR OPTIONS
+   ========================================================================== */
+
+/* Hide specific sidebar categories that should remain hidden */
+#expCL001 { display: none !important; } /* First category (already hidden) */
+#expCL002 { display: none !important; } /* Image category */
+
+/* Hide database version, owner's manual, and other system categories */
+.xCb a[href*="database"],
+.xCb a[href*="version"],
+.xCb a[href*="manual"],
+.xCb a[href*="owner"],
+.xCb a[contains(text(), 'Database')],
+.xCb a[contains(text(), 'Version')],
+.xCb a[contains(text(), 'Manual')],
+.xCb a[contains(text(), 'Image')] {
+  display: none !important;
 }
 
-/**the below css its for the id on the template of 120 to provide its default size***/
-#img120 img{
-  height:120px;
-  width:120px;
+/* Alternative approach - hide by ID if they have specific IDs */
+#expCL_database,
+#expCL_version,
+#expCL_manual,
+#expCL_image {
+  display: none !important;
 }
 
-/**the below css its for the id on the template of 150 to provide its default size***/
-#img150 img{
-  height:60px;
-  width:250px;
+/* Hide additional system categories that should remain hidden */
+.xCb a[href*="packaging"],
+.xCb a[href*="owner"],
+.xCb a[href*="manual"],
+.xCb a[contains(text(), 'Packaging')],
+.xCb a[contains(text(), 'Owner')],
+.xCb a[contains(text(), 'Manual')],
+.xCb a[contains(text(), 'PACKAGING')],
+.xCb a[contains(text(), 'OWNER')],
+.xCb a[contains(text(), 'MANUAL')] {
+  display: none !important;
 }
 
-/*This is the text box message that appears over the image 'Click to Expand' or 'Click to Shrink'*/
-.mybox{
-	width:100px;
-	/*border: solid gray;*/
+/* Hide by common IDs for these categories */
+#expCL_packaging,
+#expCL_owner,
+#expCL_ownersmanual,
+#expCL_manual,
+.xCb a[id*="packaging"],
+.xCb a[id*="owner"],
+.xCb a[id*="manual"] {
+  display: none !important;
 }
 
-#img75 .mytooltip {
-	width:90px;
-}
-#img120 .mytooltip {
-	width:135px;
-}
-
-.mytooltip {
- text-align:center;
- position:absolute;
- /**any browser**/
- -webkit-transition:all 0.3s ease;
- -moz-transition:all 0.3s ease;
- -o-transition:all 0.3s ease;
- -ms-transition:all 0.3s ease;
- transition:all 0.3s ease;
- display:block;
- opacity:0!important;
- /**IE7,IE8,IE9 only**/
- filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\9;
-}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.mytooltip:nth-child(n){filter:none;}
+/* Hide any links that contain these keywords in their text content */
+.xCb a:contains("Owner's Manual"),
+.xCb a:contains("Packaging"),
+.xCb a:contains("OWNER'S MANUAL"),
+.xCb a:contains("PACKAGING") {
+  display: none !important;
 }
 
-.mybox:hover .mytooltip {
- font-size:12px;
- /**any browser**/
- color:#ffffff;
- background:rgba(246,188,65,0.55)!important;
- text-shadow:-1px -1px 0 #666, 1px -1px 0 #666, -1px  1px 0 #666, 1px  1px 0 #666;
- opacity:1!important;
- /**IE7,IE8,IE9 only**/
- font-weight:bold\9;
- color:#804C00\9;
- background:rgb(246,188,65)\9; 
- filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#a5F6BC41,endColorstr=#a5F6BC41)\9; zoom:1\9;
- /**IE7 and less only**/
-*filter: alpha(opacity=0);
-}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	.mybox:hover .mytooltip{background:transparent;}
-	.mybox:hover .mytooltip:nth-child(n){filter:none;}
+/* More aggressive hiding - target by position and common patterns */
+.xCb a[href*="owner"],
+.xCb a[href*="Owner"],
+.xCb a[href*="OWNER"],
+.xCb a[href*="manual"],
+.xCb a[href*="Manual"],
+.xCb a[href*="MANUAL"],
+.xCb a[href*="packaging"],
+.xCb a[href*="Packaging"],
+.xCb a[href*="PACKAGING"],
+.xCb a[href*="pack"],
+.xCb a[href*="Pack"],
+.xCb a[href*="PACK"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
-/*******end of text box message*******/
-
-/**fix to prevent color gray in IE10 & IE11 + **/
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-{
-	.mybox:hover .mytooltip {color:#ffffff;}
+/* Hide by common text patterns - more comprehensive */
+.xCb a {
+  /* This will be overridden by JavaScript if needed */
 }
 
-/********This is for Front & Rear Set Height / Weight Property Display at the top and front*********/
-#fsh_top,#rsh_top{position:fixed; /*top:-11px;*/ top:100px; width:110px; height:35px; font-family:Open Sans,Segoe UI,Segoe,Tahoma,Helvetica,Arial,sans-serif; color:#ffffff; font-weight:bold; font-size:13px; z-index:1;}
-#fsh_top{left:485px;}
-#rsh_top{left:656px;}
-
-
-/**fix to prevent small window in IE10 & IE11+ **/
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-{
-	#fsh_top .xP td[ct='p'] {width: 100%;}
-	#rsh_top .xP td[ct='p'] {width: 100%;}
+/* Target last few items in sidebar if they're the problematic ones */
+.xCb a:nth-last-child(-n+3) {
+  /* We'll check if these are the owner's manual/packaging items */
 }
 
-#weight_display{position:fixed; /*top:-11px;*/ top:100px; width:110px; height:35px; font-family:Open Sans,Segoe UI,Segoe,Tahoma,Helvetica,Arial,sans-serif; color:#ffffff; font-weight:bold; font-size:13px; z-index:1;}
-#weight_display{left:656px;}
-
-/***this is for any browser***/
-#fsh_top  td:nth-child(2),#rsh_top td:nth-child(2){text-align:center; color:#666; background:rgba(227, 225, 225, 1)!important; border:3px solid #cccccc; float:left; position:relative; left:-49px;}
-#fsh_top  td:nth-child(1),#rsh_top  td:nth-child(1){float:right; position:absolute;}
-
-#weight_display  td:nth-child(2){text-align:center; color:#666; background:rgba(227, 225, 225, 1)!important; border:3px solid #cccccc; float:left; position:relative; left:-49px;}
-#weight_display  td:nth-child(1){float:right; position:absolute;}
-
-/***this is for IE7,IE8,IE9 only*****nth:child does not work IE8 less***/
-#fsh_top td:first-child+td, #rsh_top td:first-child+td {text-align:center; color:#666; background:rgb(227,225,255)\9; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffE3E1FF,endColorstr=#ffE3E1FF)\9; zoom:1\9; border:3px solid #cccccc;  float:left; position:relative;left:-49px; }
-#fsh_top td:first-child, #rsh_top td:first-child {float:right;position:absolute;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	#fsh_top td:first-child+td, #rsh_top td:first-child+td {background:transparent;}
+/* Force hide any element containing these words anywhere */
+*[id*="owner" i],
+*[id*="manual" i],
+*[id*="packaging" i],
+*[class*="owner" i],
+*[class*="manual" i],
+*[class*="packaging" i] {
+  display: none !important;
 }
 
-
-#weight_display td:first-child+td {text-align:center; color:#666; background:rgb(227,225,255)\9; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffE3E1FF,endColorstr=#ffE3E1FF)\9; zoom:1\9; border:3px solid #cccccc;  float:left; position:relative; left:-49px;}
-#weight_display td:first-child {float:right;position:absolute;}
-@media all and (min-width:0\0) and (min-resolution: .001dpcm)
-{
-	/**IE9 only**/
-	#weight_display td:first-child+td  {background:transparent;}
+/* Hide parent containers that might contain these items */
+.xCb > *:has(a[href*="owner"]),
+.xCb > *:has(a[href*="manual"]),
+.xCb > *:has(a[href*="packaging"]) {
+  display: none !important;
 }
-/*************************end of front & rear seat height / weight at top and front********************************************************************/
+/* ==========================================================================
+   SIDEBAR MODERNIZATION
+   ========================================================================== */
 
-/*****************Green and Red Images at top of menu bar***********************************************/ 
-#green_light, #red_light {position:fixed; /*top:5px;*/ top:115px; width:25px; height:25px; left:765px; z-index:1;}
-/******************************end of red and greem menu bar*********************************************/ 
-
-/************************************************************************
-All of the below id are for the buttons in the main menu , are disable (only, otherwise it wont be call)
-#b11 Return to the start page
-#b1  Save configuration
-#b16 Back
-#b19 Save configuration and continue
-#b21 Validate configuration
-#b14 Display all configuration messages
-*************************************************************************/
-#b11, #b1, #b16, #b19, #b21, #b14 {display:none;}
-
-/****the below id is the Fix Error Button (Fix configuration errors) its hidden, not disable****/
-#b6 {visibility:hidden;}
-
-/***********the Following is added directly into MSCRM60-Borders.css File due to the restriction of communication*******/
-/***********be really careful when proceeding below, only admin should follow up****************************************/
-
-/*the below CSS is to add an image bgbottom.png as background under the class .xMsgTb with an height of 62px*/
-/*start my mod //NOTE:local dont need sunrise/
-.xMsgTb{height:62px;background:url(/sunrise/experlogix/site/images/bgbottom.png); background-repeat:no-repeat;border-style:none;}
-end my mod*/
-/*this is the default value but is turn off so it can be replace {height:62px;background-color:#fff;border-style:none;}*/
-
-/*the below CSS is to give corner to the borders of the buttons menu at the top with a background color of orange , font color white with bold style and no border line on each option when doing a hover*/
-/*old .xTbBtns>a:hover{color:#FFF;font-weight:bold;border-style:none;background:#ffbc41;-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;} */
-
-/*start my mod
-.xTbBtns>a:hover{color:#FFF; font-weight:bold; border-style:none; background:#f9a819;}
-end my mod*/
-/*this is the default value but is turn off so it can be replace{border-style:none;background-color:#d7ebf9;}*/
-
-/*the below CSS is to give corner to the borders thin line of 2px of the buttons menu at the top with a background color of darker orange*/
-/*start my mod
-***OLD 16****
-.xRgnHdr{margin-top:auto;background-color: #E3E1E1;border: 2px solid #CCC;border-radius: 5px;}
-***NEW 25***
-.xMsgBody .xRgn>.xRgnHdr,.xMsgBody .xRgn>.xRgnHdrGL{margin-top:auto;background-color: #E3E1E1;border: 2px solid #CCC;border-radius: 5px;}
-*****NEW*****
-.xMsgBody .xRgn>.xRgnHdr,.xMsgBody .xRgn>.xRgnHdrGL{margin-top:auto; background-color:#E3E1E1;}
-end my mod*/
-/*this is the default value but is turn off so it can be replace{margin-top:auto;}*/
-
-/*the below CSS is make the button cancel not visible but without losing its space*/
-/*start my mod
-#btnCancel{visibility:hidden;}
-end my mod*/
-/*Theres no Default for this values as this is new in the integrity of the File*/
-
-/*************************************************************************************************************************/
-/***********the following needs to be added into the resource folder of experlogix****************************************/
-/*Create a file named Strings.en-us.config and add the following:
-GEN_MSG_MISSINGOPT   <div style='width:450px; height:110px; background-color:#ffffff; z-index:1; position:absolute;'>Please re-select the <b>Final Step</b> option to resave your configuration.</div>
-GEN_WRN_CORRECT      Please fix all red errors that are highlighted on the categories before saving this configurator,for more information click on the question mark that’s at the top right of the category.
-For more information  click on the question mark that’s at the top right of the category.
-*/
-/**************************************************************************************************************************/
-
-/******these are the div that will adjust the descriptions on the options along with images and long description and option***************/
-.fb{
-/*border: solid blue;*/
-float:left;
+.xCfg > .xCb {
+  background: var(--secondary-color) !important;
+  border-right: 1px solid var(--medium-gray) !important;
+  width: 280px !important;
+  top: 90px !important;
+  left: 0 !important;
+  padding: 20px 0 !important;
+  box-shadow: 2px 0 4px rgba(0,0,0,0.05) !important;
 }
 
-.sb {
-/*border: solid black;*/
-/*width:172px;*/
+/* Sidebar links */
+.xCb a {
+  display: block !important;
+  padding: 8px 20px !important;
+  color: var(--dark-gray) !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  border-left: 3px solid transparent !important;
+  transition: var(--transition) !important;
+  margin: 1px 0 !important;
 }
 
-.tb {
-/*border: solid red;*/
-margin-left:20px;
+.xCb a:hover {
+  background-color: rgba(249, 168, 25, 0.1) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
 }
 
-.nt {
-/*border: solid orange;*/
-font-weight:bold;
-font-style:italic;
-display: inline;
-position: absolute !important; left: -9999em; top: -9999em;
-}
-/**********end of the divs************/
-
-/*******this is to format the scrollbar with colors and hover************/
-/***this is for IE7,IE8,IE9***/
-*[scrollable] {
-scrollbar-arrow-color:#ff9900; scrollbar-face-color:#FFD699; scrollbar-shadow-color:#FFD699; scrollbar-track-color:#f3f3f3;
-}
-*[scrollable]:hover {
-scrollbar-face-color:#f6bc41;
+.xCb a:focus {
+  background-color: rgba(249, 168, 25, 0.1) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  outline: none !important;
 }
 
-/***Opera and Chrome***/
+.xCb a:active {
+  background-color: rgba(249, 168, 25, 0.15) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  outline: none !important;
+}
+
+.xCb a[hasSel="1"] {
+  background-color: rgba(249, 168, 25, 0.1) !important;
+  border-left-color: #f9a819 !important;
+  color: #f9a819 !important;
+  transform: translateX(4px) !important;
+  font-weight: 600 !important;
+  outline: none !important;
+}
+
+/* Error states in sidebar */
+.xCbBtns > a.xCbErr {
+  background-color: var(--danger-color) !important;
+  color: white !important;
+  border-left-color: #c82333 !important;
+}
+
+.xCbBtns > a.xCbErr:hover {
+  background-color: #c82333 !important;
+}
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
+
+.xMainCfg > .xBody {
+  top: 90px !important;
+  left: 280px !important;
+  padding: 20px !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Page container */
+.xPage {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
+   SECTION CONTAINERS (ROUNDED BOXES)
+   ========================================================================== */
+
+/* Option containers - force full width layout */
+.xOB, .xOBDis, .xOBErr {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  /* Reset any existing layout */
+  clear: both !important;
+  overflow: visible !important;
+}
+
+/* Individual option items */
+.xOB > *, .xOBDis > *, .xOBErr > * {
+  /* Remove default styling */
+  flex: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+}
+
+/* ALL option containers - redesign as cards */
+.xP,
+.xOB .xP,
+.xOBDis .xP,
+.xOBErr .xP,
+.xRgn .xP,
+table.xCatGrid tr,
+.xCatGrid tr {
+  display: inline-block !important;
+  background: white !important;
+  border: 2px solid var(--medium-gray) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 15px !important;
+  margin: 8px !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  position: relative !important;
+  min-width: 180px !important;
+  max-width: 280px !important;
+  vertical-align: top !important;
+  width: auto !important;
+}
+
+/* Target radio button and checkbox containers specifically */
+.xRgn input[type="radio"] + label,
+.xRgn input[type="checkbox"] + label,
+.xRgn label:has(input[type="radio"]),
+.xRgn label:has(input[type="checkbox"]),
+.xRgn .xP:has(input[type="radio"]),
+.xRgn .xP:has(input[type="checkbox"]) {
+  display: inline-block !important;
+  background: white !important;
+  border: 2px solid var(--medium-gray) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 15px !important;
+  margin: 8px !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  position: relative !important;
+  min-width: 180px !important;
+  max-width: 280px !important;
+  vertical-align: top !important;
+}
+.xP:hover {
+  border-color: var(--accent-color) !important;
+  box-shadow: var(--box-shadow-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Selected state */
+.xP:has(input[type="radio"]:checked),
+.xP:has(input[type="checkbox"]:checked),
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label,
+label:has(input[type="radio"]:checked),
+label:has(input[type="checkbox"]:checked) {
+  border-color: var(--accent-color) !important;
+  border-width: 3px !important;
+  background: rgba(0, 123, 255, 0.05) !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2) !important;
+}
+
+/* Hide ALL radio buttons and checkboxes */
+input[type="radio"],
+input[type="checkbox"],
+.xP input[type="radio"],
+.xP input[type="checkbox"],
+.xRgn input[type="radio"],
+.xRgn input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  z-index: -1 !important;
+}
+
+/* More aggressive hiding - target all possible radio/checkbox selectors */
+input[type="radio"],
+input[type="checkbox"],
+*[type="radio"],
+*[type="checkbox"],
+.xCfg input[type="radio"],
+.xCfg input[type="checkbox"],
+.xCfg *[type="radio"],
+.xCfg *[type="checkbox"],
+table input[type="radio"],
+table input[type="checkbox"],
+td input[type="radio"],
+td input[type="checkbox"],
+tr input[type="radio"],
+tr input[type="checkbox"],
+div input[type="radio"],
+div input[type="checkbox"],
+span input[type="radio"],
+span input[type="checkbox"],
+label input[type="radio"],
+label input[type="checkbox"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* Make sure all option text is visible and styled */
+.xRgn label,
+.xRgn .xP label,
+.xRgn span,
+.xRgn .xP span {
+  display: block !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  color: var(--dark-gray) !important;
+  text-align: center !important;
+  line-height: 1.4 !important;
+}
+/* Style the labels and content */
+.xP td {
+  display: block !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.xP td[ct="c"] {
+  display: none !important; /* Hide the radio button cell */
+}
+
+.xP td[ct="p"],
+.xP td[ct="cp"] {
+  display: block !important;
+  width: 100% !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  color: var(--dark-gray) !important;
+  line-height: 1.4 !important;
+}
+
+/* Images within options */
+.xP img,
+.xOB img[oi],
+.xOBDis img[oi],
+.xOBErr img[oi] {
+  display: block !important;
+  margin: 0 auto 10px auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 4px !important;
+}
+
+/* Text content styling */
+.xP .fb,
+.xP .sb,
+.xP .tb {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 5px 0 !important;
+}
+
+.xP .sb {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: var(--dark-gray) !important;
+}
+
+.xP .tb {
+  font-size: 12px !important;
+  color: var(--primary-color) !important;
+  margin-left: 0 !important;
+}
+
+/* Disabled state */
+.xOBDis .xP {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background: var(--light-gray) !important;
+}
+
+.xOBDis .xP:hover {
+  transform: none !important;
+  border-color: var(--medium-gray) !important;
+}
+
+/* Error state */
+.xOBErr .xP {
+  border-color: var(--danger-color) !important;
+  background: rgba(220, 53, 69, 0.05) !important;
+}
+
+/* Add selection indicator */
+.xP:has(input[type="radio"]:checked):before,
+.xP:has(input[type="checkbox"]:checked):before,
+input[type="radio"]:checked + label:before,
+input[type="checkbox"]:checked + label:before,
+label:has(input[type="radio"]:checked):before,
+label:has(input[type="checkbox"]:checked):before {
+  content: "\f00c" !important;
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  color: var(--accent-color) !important;
+  font-size: 16px !important;
+  background: white !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.xRgn {
+  background: white !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--box-shadow) !important;
+  margin-bottom: 20px !important;
+  overflow: hidden !important;
+  transition: var(--transition) !important;
+}
+
+.xRgn:hover {
+  box-shadow: var(--box-shadow-hover) !important;
+}
+
+/* Section headers */
+.xRgn > .xRgnHdr,
+.xRgn > .xRgnHdrGL {
+  background: linear-gradient(135deg, var(--light-gray) 0%, var(--medium-gray) 100%) !important;
+  border: none !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  position: relative !important;
+}
+
+.xRgn > .xRgnHdr:hover,
+.xRgn > .xRgnHdrGL:hover {
+  background: linear-gradient(135deg, var(--medium-gray) 0%, #dee2e6 100%) !important;
+}
+
+.xRgn > .xRgnHdr > span,
+.xRgn > .xRgnHdrGL > span {
+  font-size: 16px !important;
+  color: var(--dark-gray) !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Add collapse/expand icons */
+.xRgn > .xRgnHdr > span:after,
+.xRgn > .xRgnHdrGL > span:after {
+  content: "\f107" !important;
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  margin-left: auto !important;
+  transition: transform 0.3s ease !important;
+}
+
+.xRgn[collapsed] > .xRgnHdr > span:after,
+.xRgn[collapsed] > .xRgnHdrGL > span:after {
+  transform: rotate(-90deg) !important;
+}
+
+/* Section content */
+.xRgn .xInner {
+  padding: 20px !important;
+  border: none !important;
+  display: block !important;
+  transition: none !important;
+}
+
+/* Collapsed sections */
+.xRgn[collapsed] .xInner {
+  display: none !important;
+}
+
+/* Error states for sections */
+.xRgn[err] {
+  border-left: 4px solid var(--danger-color) !important;
+}
+
+.xRgn[err] > .xRgnHdr,
+.xRgn[err] > .xRgnHdrGL {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+  color: var(--danger-color) !important;
+}
+
+.xRgn[err] > .xRgnHdr > span,
+.xRgn[err] > .xRgnHdrGL > span {
+  color: var(--danger-color) !important;
+}
+
+/* ==========================================================================
+   FORM CONTROLS MODERNIZATION
+   ========================================================================== */
+
+/* Input fields */
+input[type="text"],
+textarea,
+.xP input,
+.xP textarea {
+  font-family: 'Muli', sans-serif !important;
+  border: 1px solid var(--medium-gray) !important;
+  border-radius: 4px !important;
+  padding: 8px 12px !important;
+  transition: var(--transition) !important;
+  background-color: white !important;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+.xP input:focus,
+.xP textarea:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+  outline: none !important;
+}
+
+input[type="text"]:hover,
+textarea:hover,
+.xP input:hover,
+.xP textarea:hover {
+  border-color: var(--primary-color) !important;
+}
+
+/* Combo boxes */
+.xComboBox > .xComboEdit {
+  border: 1px solid var(--medium-gray) !important;
+  border-radius: 4px 0 0 4px !important;
+  background-color: white !important;
+}
+
+.xComboBox > .xImage {
+  border: 1px solid var(--medium-gray) !important;
+  border-left: none !important;
+  border-radius: 0 4px 4px 0 !important;
+  background-color: var(--light-gray) !important;
+}
+
+.xComboBox:hover .xComboEdit,
+.xComboBox:hover .xImage {
+  border-color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-    width:17px;
+  width: 8px !important;
+  height: 8px !important;
 }
-::-webkit-scrollbar-button:vertical:increment {/*sunrise/experlogix for live*/
-	background-image:url(/sunrise/experlogix/site/images/down.png); height:30px;
-}
-::-webkit-scrollbar-button:vertical:decrement  {/*sunrise/experlogix for live*/
-	background-image:url(/sunrise/experlogix/site/images/up.png); height:30px;
-}
-::-webkit-scrollbar-thumb {
-    background:#FFD699;
-}
-::-webkit-scrollbar-thumb:hover {
-    background-color:#f6bc41;
-}
+
 ::-webkit-scrollbar-track {
-	-webkit-box-shadow:#f6bc41;
-	background:#f3f3f3;
+  background: var(--light-gray) !important;
+  border-radius: 4px !important;
 }
-/**firefox currently does not support scroll mod**/
-/************end of the format************************/
 
-/* small screen NOT Monitor (portrait and landscape)
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 540px) 
-{----------- */
-/* Styles 
-.sb span{font-size:13pt; color:#e58432;}
-input[type='radio'] {width:14pt; height:14pt;}
-}*/
- 
+::-webkit-scrollbar-thumb {
+  background: var(--medium-gray) !important;
+  border-radius: 4px !important;
+  transition: var(--transition) !important;
+}
 
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color) !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--light-gray) !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--medium-gray) var(--light-gray) !important;
+}
+
+/* ==========================================================================
+   BUTTONS AND INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+/* General button styling */
+.xRgn a[display='button'] {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  text-decoration: none !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 500 !important;
+  transition: var(--transition) !important;
+  cursor: pointer !important;
+}
+
+.xRgn a[display='button']:hover {
+  background: var(--accent-hover) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--box-shadow-hover) !important;
+}
+
+/* ==========================================================================
+   TABLES AND GRIDS
+   ========================================================================== */
+
+table.xCatGrid {
+  background: white !important;
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+  box-shadow: var(--box-shadow) !important;
+}
+
+table.xCatGrid th {
+  background: var(--light-gray) !important;
+  color: var(--dark-gray) !important;
+  font-family: 'Muli', sans-serif !important;
+  font-weight: 600 !important;
+  padding: 12px 8px !important;
+  border-bottom: 1px solid var(--medium-gray) !important;
+}
+
+table.xCatGrid td {
+  padding: 10px 8px !important;
+  border-bottom: 1px solid #f8f9fa !important;
+  transition: var(--transition) !important;
+}
+
+table.xCatGrid tr:hover td {
+  background-color: rgba(0, 123, 255, 0.05) !important;
+}
+
+/* ==========================================================================
+   MODAL DIALOGS
+   ========================================================================== */
+
+#overlayDlg {
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+  overflow: hidden !important;
+}
+
+#overlayDlg > .overlayDlg_title {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+#overlayDlg > .overlayDlg_title > span {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  color: white !important;
+}
+
+/* ==========================================================================
+   STATUS BAR
+   ========================================================================== */
+
+.xCfg > .xSb {
+  background: var(--light-gray) !important;
+  border-top: 1px solid var(--medium-gray) !important;
+  color: var(--dark-gray) !important;
+  font-family: 'Muli', sans-serif !important;
+  padding: 8px 20px !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .xCfg > .xCb {
+    width: 240px !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 240px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .xCfg > .xCb {
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 0 !important;
+  }
+  
+  /* Adjust spacing for mobile */
+  .xMainCfg > .xTb {
+    top: 30px !important;
+  }
+  
+  .xCfg > .xCb,
+  .xMainCfg > .xBody {
+    top: 90px !important;
+  }
+  
+  .xTbBtns > a span {
+    display: none !important;
+  }
+  
+  .xTbBtns > a {
+    padding: 10px !important;
+    min-width: 40px !important;
+  }
+}
+
+/* ==========================================================================
+   ANIMATIONS AND TRANSITIONS
+   ========================================================================== */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xRgn {
+  animation: slideIn 0.3s ease-out !important;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY IMPROVEMENTS
+   ========================================================================== */
+
+/* Focus indicators */
+*:focus {
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #000000;
+    --accent-color: #0000ff;
+    --danger-color: #ff0000;
+    --success-color: #008000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .xCfg > .xTb,
+  .xCfg > .xCb,
+  .xCfg > .xSb {
+    display: none !important;
+  }
+  
+  .xMainCfg > .xBody {
+    left: 0 !important;
+    top: 0 !important;
+  }
+  
+  .xRgn {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid !important;
+  }
+}
