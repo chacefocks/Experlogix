@@ -326,6 +326,51 @@
    SECTION CONTAINERS (ROUNDED BOXES)
    ========================================================================== */
 
+/* Option containers - force full width layout */
+.xOB, .xOBDis, .xOBErr {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Individual option items */
+.xOB > *, .xOBDis > *, .xOBErr > * {
+  flex: 0 1 auto !important;
+  min-width: 200px !important;
+  max-width: 300px !important;
+  margin: 0 !important;
+}
+
+/* Property containers */
+.xP {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-right: 15px !important;
+  margin-bottom: 10px !important;
+  white-space: nowrap !important;
+}
+
+/* Radio buttons and checkboxes */
+.xP input[type="radio"], 
+.xP input[type="checkbox"] {
+  margin-right: 8px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Labels and text */
+.xP td[ct="c"], 
+.xP td[ct="p"] {
+  display: inline !important;
+  vertical-align: middle !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
 .xRgn {
   background: white !important;
   border-radius: var(--border-radius) !important;
