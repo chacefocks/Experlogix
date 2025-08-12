@@ -66,7 +66,7 @@
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
   border: none !important;
   box-shadow: var(--box-shadow) !important;
-  top: 0 !important;
+  top: 80px !important;
   z-index: 1000 !important;
 }
 
@@ -137,7 +137,7 @@
   background: var(--secondary-color) !important;
   border-right: 1px solid var(--medium-gray) !important;
   width: 280px !important;
-  top: 60px !important;
+  top: 140px !important;
   left: 0 !important;
   padding: 20px 0 !important;
   box-shadow: 2px 0 4px rgba(0,0,0,0.05) !important;
@@ -186,7 +186,7 @@
    ========================================================================== */
 
 .xMainCfg > .xBody {
-  top: 60px !important;
+  top: 140px !important;
   left: 280px !important;
   padding: 20px !important;
   background-color: #f8f9fa !important;
@@ -478,6 +478,16 @@ table.xCatGrid tr:hover td {
   
   .xMainCfg > .xBody {
     left: 0 !important;
+  }
+  
+  /* Adjust spacing for mobile */
+  .xMainCfg > .xTb {
+    top: 60px !important;
+  }
+  
+  .xCfg > .xCb,
+  .xMainCfg > .xBody {
+    top: 120px !important;
   }
   
   .xTbBtns > a span {
