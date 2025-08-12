@@ -220,12 +220,12 @@
 }
 
 /* Force hide any element containing these words anywhere */
-*[id*="owner" i],
-*[id*="manual" i],
-*[id*="packaging" i],
-*[class*="owner" i],
-*[class*="manual" i],
-*[class*="packaging" i] {
+*[id*="owner\" i],
+*[id*="manual\" i],
+*[id*="packaging\" i],
+*[class*="owner\" i],
+*[class*="manual\" i],
+*[class*="packaging\" i] {
   display: none !important;
 }
 
