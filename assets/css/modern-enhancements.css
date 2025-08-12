@@ -157,6 +157,37 @@
   display: none !important;
 }
 
+/* Hide additional system categories that should remain hidden */
+.xCb a[href*="packaging"],
+.xCb a[href*="owner"],
+.xCb a[href*="manual"],
+.xCb a[contains(text(), 'Packaging')],
+.xCb a[contains(text(), 'Owner')],
+.xCb a[contains(text(), 'Manual')],
+.xCb a[contains(text(), 'PACKAGING')],
+.xCb a[contains(text(), 'OWNER')],
+.xCb a[contains(text(), 'MANUAL')] {
+  display: none !important;
+}
+
+/* Hide by common IDs for these categories */
+#expCL_packaging,
+#expCL_owner,
+#expCL_ownersmanual,
+#expCL_manual,
+.xCb a[id*="packaging"],
+.xCb a[id*="owner"],
+.xCb a[id*="manual"] {
+  display: none !important;
+}
+
+/* Hide any links that contain these keywords in their text content */
+.xCb a:contains("Owner's Manual"),
+.xCb a:contains("Packaging"),
+.xCb a:contains("OWNER'S MANUAL"),
+.xCb a:contains("PACKAGING") {
+  display: none !important;
+}
 /* ==========================================================================
    SIDEBAR MODERNIZATION
    ========================================================================== */
