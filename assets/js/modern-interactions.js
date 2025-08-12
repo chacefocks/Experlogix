@@ -26,11 +26,16 @@
      * Initialize collapsible sections
      */
     function initializeCollapsibleSections() {
-        const sections = document.querySelectorAll('.xRgn > .xRgnHdr, .xRgn > .xRgnHdrGL');
+        const headers = document.querySelectorAll('.xRgn > .xRgnHdr, .xRgn > .xRgnHdrGL');
         
-        sections.forEach(header => {
+        headers.forEach(header => {
+            // Remove any existing click handlers to prevent conflicts
+            header.removeEventListener('click', handleHeaderClick);
+            
             header.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
+                
                 const section = this.parentElement;
                 const content = section.querySelector('.xInner');
                 
@@ -41,10 +46,10 @@
                 
                 if (isCollapsed) {
                     section.removeAttribute('collapsed');
-                    slideDown(content);
+                    content.style.display = 'block';
                 } else {
                     section.setAttribute('collapsed', '');
-                    slideUp(content);
+                    content.style.display = 'none';
                 }
                 
                 // Update ARIA attributes for accessibility
@@ -63,51 +68,14 @@
             
             if (content) {
                 content.setAttribute('aria-hidden', isCollapsed);
+                // Ensure content is visible by default unless collapsed
+                if (!isCollapsed) {
+                    content.style.display = 'block';
+                }
             }
         });
     }
 
-    /**
-     * Smooth slide down animation
-     */
-    function slideDown(element) {
-        element.style.height = '0px';
-        element.style.overflow = 'hidden';
-        element.style.display = 'block';
-        
-        const height = element.scrollHeight + 'px';
-        element.style.transition = 'height 0.3s ease-out';
-        
-        requestAnimationFrame(() => {
-            element.style.height = height;
-        });
-        
-        setTimeout(() => {
-            element.style.height = '';
-            element.style.overflow = '';
-            element.style.transition = '';
-        }, 300);
-    }
-
-    /**
-     * Smooth slide up animation
-     */
-    function slideUp(element) {
-        element.style.height = element.scrollHeight + 'px';
-        element.style.overflow = 'hidden';
-        element.style.transition = 'height 0.3s ease-out';
-        
-        requestAnimationFrame(() => {
-            element.style.height = '0px';
-        });
-        
-        setTimeout(() => {
-            element.style.display = 'none';
-            element.style.height = '';
-            element.style.overflow = '';
-            element.style.transition = '';
-        }, 300);
-    }
 
     /**
      * Initialize smooth scrolling for navigation

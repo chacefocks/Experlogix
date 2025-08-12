@@ -384,6 +384,13 @@
 .xRgn .xInner {
   padding: 20px !important;
   border: none !important;
+  display: block !important;
+  transition: none !important;
+}
+
+/* Collapsed sections */
+.xRgn[collapsed] .xInner {
+  display: none !important;
 }
 
 /* Error states for sections */
