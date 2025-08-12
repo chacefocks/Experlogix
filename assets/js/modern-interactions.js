@@ -518,19 +518,8 @@
         });
         
         observer.observe(document.body, {
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            
-            const input = card.querySelector('input[type="radio"], input[type="checkbox"]');
-            if (input) {
-                const label = card.querySelector('td[ct="p"], td[ct="cp"]');
-                if (label) {
-                    card.setAttribute('aria-label', label.textContent.trim());
-                }
-            }
             childList: true,
             subtree: true
         });
-    }
     }
 })();
