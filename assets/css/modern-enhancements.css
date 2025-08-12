@@ -130,6 +130,34 @@
 #b21 { display: none !important; }
 
 /* ==========================================================================
+   HIDDEN SIDEBAR OPTIONS
+   ========================================================================== */
+
+/* Hide specific sidebar categories that should remain hidden */
+#expCL001 { display: none !important; } /* First category (already hidden) */
+#expCL002 { display: none !important; } /* Image category */
+
+/* Hide database version, owner's manual, and other system categories */
+.xCb a[href*="database"],
+.xCb a[href*="version"],
+.xCb a[href*="manual"],
+.xCb a[href*="owner"],
+.xCb a[contains(text(), 'Database')],
+.xCb a[contains(text(), 'Version')],
+.xCb a[contains(text(), 'Manual')],
+.xCb a[contains(text(), 'Image')] {
+  display: none !important;
+}
+
+/* Alternative approach - hide by ID if they have specific IDs */
+#expCL_database,
+#expCL_version,
+#expCL_manual,
+#expCL_image {
+  display: none !important;
+}
+
+/* ==========================================================================
    SIDEBAR MODERNIZATION
    ========================================================================== */
 
