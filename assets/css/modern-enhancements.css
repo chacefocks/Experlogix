@@ -1,0 +1,320 @@
+/*
+ * Modern Enhancements Stylesheet
+ * Safe styling additions for Sunrise Medical Web Configurator
+ * This file adds modern styling without modifying existing functionality
+ */
+
+/* ==========================================================================
+   TOP LOGO IMAGE FIX
+   ========================================================================== */
+
+/* Fix for top logo image and reduce top bar height to 55px */
+#C2_LOGO {
+  height: 55px !important;
+  max-height: 55px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 55px !important;
+  overflow: hidden !important;
+}
+
+#C2_LOGO td {
+  height: 55px !important;
+  vertical-align: middle !important;
+  padding: 5px !important;
+  line-height: normal !important;
+}
+
+#C2_LOGO img {
+  max-height: 45px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+#C2_LOGO table {
+  height: 55px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-collapse: collapse !important;
+}
+
+/* Target the main toolbar container */
+.xMainCfg > .xTb {
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+  background-color: #f5f5f5 !important;
+}
+
+/* Adjust body positioning to account for smaller header */
+.xMainCfg > .xBody,
+.xMainCfg > .xCb {
+  top: 55px !important;
+}
+
+/* ==========================================================================
+   CONFIG DIV SPACING FIX
+   ========================================================================== */
+
+/* Fix the gap between logo and orange bar by adjusting .xCfg positioning */
+.xCfg {
+  top: 65px !important; /* Move config container to create balanced spacing */
+}
+
+/* Adjust the orange bar to start at the top of the config container */
+.xMainCfg > .xTb {
+  top: 10px !important; /* Orange bar starts 10px down from top of config container */
+  z-index: 1 !important; /* Normal z-index for orange bar */
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+}
+
+/* Ensure logo stays on top */
+#C2_LOGO {
+  z-index: 2 !important; /* Keep logo above orange bar */
+  position: relative !important;
+}
+
+/* Adjust body positioning to account for smaller header */
+.xMainCfg > .xBody,
+.xMainCfg > .xCb {
+  top: 65px !important; /* Content starts below orange bar within config container */
+}
+
+/* ==========================================================================
+   ORANGE BAR BUTTON CENTERING
+   ========================================================================== */
+
+/* Center the buttons vertically in the orange bar */
+.xMainCfg > .xTb > .xTbBtns {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  height: auto !important;
+}
+
+/* Ensure buttons have proper spacing and alignment */
+.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 32px !important;
+  padding: 8px 12px !important;
+  margin: 0 2px !important;
+}
+
+/* Fix button text alignment */
+.xTbBtns > a:not(#b11):not(#b1):not(#b16):not(#b19):not(#b21):not(#b14) span {
+  line-height: 1 !important;
+  margin-top: 0 !important;
+}
+
+/* ==========================================================================
+   HIDE SPECIFIC BUTTONS
+   ========================================================================== */
+
+/* Ensure Validate button stays hidden (override any display changes) */
+#b21 {
+  display: none !important;
+}
+
+/* ==========================================================================
+   ORDER ENTRY SYSTEM TEXT STYLING - Target actual HTML elements
+   ========================================================================== */
+
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Import Font Awesome for modern icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Style the "Order Entry System" text - target the <i> tag inside .xTbText */
+#C2_LOGO i {
+  font-family: 'Montserrat', sans-serif !important;
+  font-style: normal !important; /* Remove italic */
+  color: #666666 !important; /* Grey color */
+  font-weight: bold !important; /* Make it bold */
+  font-size: 16px !important; /* Override the large 40px from parent */
+
+/* ==========================================================================
+   MODERN ICON REPLACEMENTS - TARGET SPECIFIC BUTTON IDS
+   ========================================================================== */
+
+/* Hide all toolbar button images */
+#b10 img,
+#b13 img,
+#b3 img,
+#b4 img {
+  display: none !important;
+}
+
+/* Replace Save and Close button (b10) with Font Awesome save icon */
+#b10:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f0c7" !important; /* Save icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+}
+
+/* Replace Close button (b13) with Font Awesome close icon */
+#b13:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f00d" !important; /* Close/X icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+}
+
+/* Replace Reset button (b3) with Font Awesome refresh icon */
+#b3:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f2f9" !important; /* Refresh/Reset icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+}
+
+/* Replace Quick View button (b4) with Font Awesome eye icon */
+#b4:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f06e" !important; /* Eye/View icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+}
+
+/* Hover effects for the new icons */
+#b10:hover:before,
+#b13:hover:before,
+#b3:hover:before,
+#b4:hover:before {
+  color: #333 !important;
+}
+
+/* ==========================================================================
+   NUCLEAR ICON REPLACEMENT - TARGET BY SRC ATTRIBUTE
+   ========================================================================== */
+
+/* Target images by their exact src attributes - NUCLEAR APPROACH */
+img[src="assets/images/btnSave.png"],
+img[src="assets/images/btnCancel.png"], 
+img[src="assets/images/btnReset.png"],
+img[src="assets/images/btnQuickView.png"],
+img[src*="btnSave.png"],
+img[src*="btnCancel.png"],
+img[src*="btnReset.png"], 
+img[src*="btnQuickView.png"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  z-index: -1 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Replace with Font Awesome icons using button IDs */
+#b10:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f0c7" !important; /* Save icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+#b13:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f00d" !important; /* Close/X icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+#b3:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f2f9" !important; /* Refresh/Reset icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+#b4:before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  content: "\f06e" !important; /* Eye/View icon */
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+/* Hover effects for icons */
+#b10:hover:before,
+#b13:hover:before,
+#b3:hover:before,
+#b4:hover:before {
+  color: #333 !important;
+}
+
+/* ALTERNATIVE APPROACH - If Font Awesome doesn't work, use Unicode symbols */
+#b10 span:before {
+  content: "💾 " !important;
+  font-size: 14px !important;
+  margin-right: 4px !important;
+}
+
+#b13 span:before {
+  content: "❌ " !important;
+  font-size: 14px !important;
+  margin-right: 4px !important;
+}
+
+#b3 span:before {
+  content: "🔄 " !important;
+  font-size: 14px !important;
+  margin-right: 4px !important;
+}
+
+#b4 span:before {
+  content: "👁️ " !important;
+  font-size: 14px !important;
+  margin-right: 4px !important;
+}
